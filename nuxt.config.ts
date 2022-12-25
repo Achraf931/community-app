@@ -18,7 +18,7 @@ export default defineNuxtConfig({
             name: 'Community',
             description: 'Application de type réseau social d\'entraide entre étudiants',
             lang: 'fr',
-            theme_color: '#EFF0F4',
+            theme_color: '#262626',
             useWebmanifestExtension: false
         }
     },
