@@ -1,6 +1,8 @@
 <script setup>
+const { find } = useStrapi()
+const { data } = await find('posts', { populate: '*', sort: 'createdAt:desc' })
+console.log(data)
 const toggleDarkMode = () => {
-  console.log('our')
   document.getElementById('container').classList.toggle('dark')
 }
 </script>
@@ -16,11 +18,7 @@ const toggleDarkMode = () => {
         </div>
       </header>
       <section id="content" class="flex flex-col flex-1 overflow-scroll gap-3">
-        <PostClassic category="Aide" />
-        <PostEvent />
-        <PostClassic category="Conseil" />
-        <PostClassic category="Révision" />
-        <PostEvent />
+        <PostClassic v-for="post in data" :key="post.id" :post="post.attributes" :id="post.id" />
       </section>
       <nav class="rounded-xl bg-white dark:bg-neutral-900 dark:fill-white">
         <ul class="flex items-center justify-between rounded-full">
