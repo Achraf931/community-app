@@ -35,16 +35,16 @@ const props = defineProps({
   <article class="flex flex-col bg-custom-gray gap-4 py-4 px-2 rounded-3xl last:mb-3">
     <header class="flex gap-4 px-2 items-center justify-between">
       <div class="flex gap-4 items-center">
-        <img class="w-10 h-10 rounded-full object-cover border border-solid border-indigo-600" :src="props.post.author.data.attributes.image" alt="Photo de profil">
+        <img class="w-10 h-10 rounded-full object-cover border border-solid border-indigo-600" :src="props.post.image" alt="Photo de profil">
         <div>
-          <p class="text-base text-custom-white">@{{ props.post.author.data.attributes.username }}</p>
+          <p class="text-base text-custom-white">@{{ props.post.username }}</p>
           <p class="text-xs text-light-gray">{{ $dayjs(props.post.createdAt).locale('fr').fromNow() }}</p>
         </div>
       </div>
       <span class="flex items-center pt-1.5 justify-center p-2.5 w-10 h-10 bg-mid-gray rounded-full text-light-gray">. . .</span>
     </header>
 
-    <img v-if="props.id === 3" class="rounded-t-3xl" src="https://img-0.journaldunet.com/nds11COnzaqETUTlqHDvQyy3YD0=/1500x/smart/ab68ae85e74c4b2691006c0467f8b7dc/ccmcms-jdn/25881466.jpg" alt="image">
+    <img v-if="props.id === 3" class="rounded-t-3xl" src="https://static1.purebreak.com/articles/2/13/37/32/@/557689-aladdin-le-nouveau-jafar-est-tres-sexy-opengraph_1200-2.jpg" alt="image">
     <p v-else style="list-style: none" class="px-2 text-custom-white" v-html="props.post.content" />
     <footer class="flex flex-col gap-4 px-4">
       <div id="icons" class="flex items-center gap-4">
@@ -54,7 +54,7 @@ const props = defineProps({
       </div>
       <div class="text-xs text-light-gray">
         <p>229 J'aime</p>
-        <p v-if="props.id === 3" class="py-2 text-base text-custom-white">Une petite description de cette image</p>
+        <p v-if="props.id === 3" class="py-2 text-base text-custom-white">{{ props.post.content }}</p>
         <p>Voir les 200 commentaires</p>
       </div>
     </footer>
