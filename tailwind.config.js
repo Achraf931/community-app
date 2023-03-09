@@ -11,8 +11,16 @@ module.exports = {
   ],
   theme: {
     extend: {
+      colors: {
+        'custom-white': '#FEFEFF',
+        'default': '#1A1A1D',
+        'custom-gray': '#2B2D2E',
+        'mid-gray': '#3E3F41',
+        'light-gray': '#A1A3A5'
+      },
       fontFamily: {
-        poppins: ['Poppins']
+        poppins: ['Poppins'],
+        questrial: ['Questrial']
       }
     }
   },
