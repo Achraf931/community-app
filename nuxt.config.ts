@@ -1,4 +1,9 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
+// @ts-ignore
 export default defineNuxtConfig({
     app: {
         head: {
@@ -17,6 +22,9 @@ export default defineNuxtConfig({
         cookieName: 'strapi_jwt'
     },
     pwa: {
+        icon: {
+            source: '~/assets/images/icon.png'
+        },
         meta: {
             // Generate splash screens for iOS
             mobileAppIOS: true,
@@ -28,7 +36,13 @@ export default defineNuxtConfig({
             name: 'Community',
             description: 'Réseau social d\'entraide pour étudiants.',
             lang: 'fr',
-            theme_color: '#1A1A1D',
+            icons: [{
+                purpose: 'maskable',
+                src: '~/assets/images/icon.png',
+                type: 'image/png',
+                sizes: '512x512'
+            }],
+            theme_color: '#1A1A1D'
         }
     },
     css: ['~/assets/css/main.css'],

@@ -12,6 +12,8 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        'custom-light-pink': '#F4EDFD',
+        'custom-pink': '#FF2D87',
         'custom-white': '#FEFEFF',
         'default': '#1A1A1D',
         'custom-gray': '#2B2D2E',
@@ -19,6 +21,7 @@ module.exports = {
         'light-gray': '#A1A3A5'
       },
       fontFamily: {
+        gilroy: ['Gilroy'],
         poppins: ['Poppins'],
         questrial: ['Questrial']
       }
