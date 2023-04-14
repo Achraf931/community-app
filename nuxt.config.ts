@@ -11,19 +11,12 @@ export default defineNuxtConfig({
         }
     },
     modules: [
-        '@kevinmarrec/nuxt-pwa',
-        '@nuxtjs/strapi',
+        '@vueuse/nuxt',
+        '@kevinmarrec/nuxt-pwa'
     ],
-    strapi: {
-        url: process.env.STRAPI_URL || 'http://127.0.0.1:1337',
-        prefix: '/api',
-        version: 'v4',
-        cookie: {},
-        cookieName: 'strapi_jwt'
-    },
     pwa: {
         icon: {
-            source: '~/assets/images/icon.png'
+            source: 'assets/images/icon.png'
         },
         meta: {
             // Generate splash screens for iOS
@@ -38,7 +31,7 @@ export default defineNuxtConfig({
             lang: 'fr',
             icons: [{
                 purpose: 'maskable',
-                src: '~/assets/images/icon.png',
+                src: 'assets/images/icon.png',
                 type: 'image/png',
                 sizes: '512x512'
             }],

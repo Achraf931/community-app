@@ -1,6 +1,11 @@
 <script setup>
 const { $dayjs } = useNuxtApp();
 
+const open = ref(false)
+const target = ref(null)
+
+onClickOutside(target, () => open.value = false)
+
 const props = defineProps({
   post: {
     type: Object,
@@ -41,7 +46,32 @@ const props = defineProps({
           <p class="text-xs text-light-gray">{{ $dayjs(props.post.createdAt).locale('fr').fromNow() }}</p>
         </div>
       </div>
-      <svg class="w-10 h-10 transition-all duration-150 ease-in-out fill-mid-gray hover:fill-light-gray active:fill-light-gray focus:fill-light-gray" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12.002 2c5.518 0 9.998 4.48 9.998 9.998 0 5.517-4.48 9.997-9.998 9.997-5.517 0-9.997-4.48-9.997-9.997 0-5.518 4.48-9.998 9.997-9.998zm2.498 9.995c0-.69.56-1.25 1.25-1.25s1.25.56 1.25 1.25-.56 1.25-1.25 1.25-1.25-.56-1.25-1.25zm-3.75 0c0-.69.56-1.25 1.25-1.25s1.25.56 1.25 1.25-.56 1.25-1.25 1.25-1.25-.56-1.25-1.25zm-3.75 0c0-.69.56-1.25 1.25-1.25s1.25.56 1.25 1.25-.56 1.25-1.25 1.25-1.25-.56-1.25-1.25z"/></svg>
+        <div ref="target" class="relative inline-block text-left">
+          <svg @click="open = !open" :class="open ? 'fill-light-gray' : 'fill-mid-gray'" class="w-10 h-10 transition-all duration-150 ease-in-out outline-0" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m12.002 2c5.518 0 9.998 4.48 9.998 9.998 0 5.517-4.48 9.997-9.998 9.997-5.517 0-9.997-4.48-9.997-9.997 0-5.518 4.48-9.998 9.997-9.998zm2.498 9.995c0-.69.56-1.25 1.25-1.25s1.25.56 1.25 1.25-.56 1.25-1.25 1.25-1.25-.56-1.25-1.25zm-3.75 0c0-.69.56-1.25 1.25-1.25s1.25.56 1.25 1.25-.56 1.25-1.25 1.25-1.25-.56-1.25-1.25zm-3.75 0c0-.69.56-1.25 1.25-1.25s1.25.56 1.25 1.25-.56 1.25-1.25 1.25-1.25-.56-1.25-1.25z"/></svg>
+
+            <transition
+              enter-active-class="ease-out"
+              enter-from-class="transform opacity-0 scale-95"
+              leave-from-class="transform opacity-100 scale-100"
+
+              enter-class="transform opacity-0 scale-95"
+              enter-to-class="transform opacity-100 scale-100"
+              leave-active-class="ease-in"
+              leave-class="opacity-100"
+              leave-to-class="transform opacity-0 scale-95"
+              mode="out-in"
+              appear
+            >
+                <div v-show="open" class="duration-150 absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-mid-gray shadow-lg focus:outline-none overflow-hidden" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                    <div role="none">
+                        <p class="hover:bg-light-gray text-custom-white block px-4 font-medium py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Signaler</p>
+                        <p class="hover:bg-light-gray text-custom-white block px-4 font-medium py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">Partager</p>
+                        <p class="hover:bg-light-gray text-custom-white block px-4 font-medium py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-2">Masquer</p>
+                        <p class="hover:bg-light-gray text-custom-white block px-4 font-medium py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-3">Ajouter aux favoris</p>
+                    </div>
+                </div>
+            </transition>
+        </div>
     </header>
 
     <img v-if="props.id === 3" class="rounded-t-3xl" src="https://static1.purebreak.com/articles/2/13/37/32/@/557689-aladdin-le-nouveau-jafar-est-tres-sexy-opengraph_1200-2.jpg" alt="image">
