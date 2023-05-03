@@ -12,18 +12,16 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'custom-light-pink': '#F4EDFD',
+        'custom-light-gray': '#F2F2F2',
         'custom-pink': '#FF2D87',
         'custom-white': '#FEFEFF',
-        'default': '#1A1A1D',
+        'default': '#0F0F11',
         'custom-gray': '#2B2D2E',
         'mid-gray': '#3E3F41',
-        'light-gray': '#A1A3A5'
+        'light-gray': '#97979E'
       },
       fontFamily: {
-        gilroy: ['Gilroy'],
-        poppins: ['Poppins'],
-        questrial: ['Questrial']
+        poppins: ['Poppins']
       }
     }
   },
