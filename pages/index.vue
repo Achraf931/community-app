@@ -48,25 +48,25 @@ const { $dayjs } = useNuxtApp();
             <div class="flex gap-2 items-center w-full">
                 <div class="w-full">
                     <div class="flex items-center justify-between">
-                        <p class="text-base font-medium">Camille</p>
+                        <p class="text-base font-medium">Luffy</p>
                         <small class="text-light-gray">201 discussions</small>
                     </div>
-                    <p class="text-xs text-light-gray mt-2 mb-4">Art & Design</p>
-                    <p class="font-medium">Comment créer un design simple et épuré ?</p>
+                    <p class="text-xs text-light-gray mt-1 mb-4">Pirate</p>
+                    <p class="font-medium">Comment devenir les roi des pirates ?</p>
                 </div>
             </div>
         </article>
 
         <article class="flex align-baseline justify-start gap-4 rounded-3xl bg-white shadow-sm p-4">
-            <img class="w-10 h-10 rounded-full object-cover shadow-md" src="https://pm1.narvii.com/6538/ab1e252b9b45b9e1bb64a2a60a3d5dc3250357ec_00.jpg" alt="Photo de profil">
+            <img class="w-10 h-10 rounded-full object-cover shadow-md" src="https://i.pinimg.com/originals/ec/83/3d/ec833d04025d2ca263df3b04bbc8723c.jpg" alt="Photo de profil">
             <div class="flex gap-2 items-center w-full">
                 <div class="w-full">
                     <div class="flex items-center justify-between">
-                        <p class="text-base font-medium">Camille</p>
-                        <small class="text-light-gray">201 discussions</small>
+                        <p class="text-base font-medium">Mikasa</p>
+                        <small class="text-light-gray">4 discussions</small>
                     </div>
-                    <p class="text-xs text-light-gray mt-2 mb-4">Art & Design</p>
-                    <p class="font-medium">Comment créer un design simple et épuré ?</p>
+                    <p class="text-xs text-light-gray mt-1 mb-4">Assistante sociale</p>
+                    <p class="font-medium">Eren ! Où est-tu !?</p>
                 </div>
             </div>
         </article>

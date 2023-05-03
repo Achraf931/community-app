@@ -35,7 +35,7 @@ export default defineNuxtConfig({
                 type: 'image/png',
                 sizes: '512x512'
             }],
-            theme_color: '#1A1A1D'
+            theme_color: '#F2F2F2'
         }
     },
     css: ['~/assets/css/main.css'],
