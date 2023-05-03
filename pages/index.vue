@@ -38,7 +38,7 @@ const { $dayjs } = useNuxtApp();
         </div>
     </header>
     <section id="content" class="flex flex-col flex-1 overflow-hidden gap-5 p-5">
-        <div class="flex items-center justify-between mb-4">
+        <div class="flex items-center justify-between">
             <h2 class="font-semibold text-xl">Suggestions pour vous</h2>
             <small class="text-light-gray">Tout voir</small>
         </div>
