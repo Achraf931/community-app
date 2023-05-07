@@ -16,7 +16,7 @@ export default defineNuxtConfig({
     ],
     pwa: {
         icon: {
-            source: 'assets/images/icon.png'
+            source: '/images/icon.png'
         },
         meta: {
             // Generate splash screens for iOS
@@ -31,7 +31,7 @@ export default defineNuxtConfig({
             lang: 'fr',
             icons: [{
                 purpose: 'maskable',
-                src: 'assets/images/icon.png',
+                src: '/images/icon.png',
                 type: 'image/png',
                 sizes: '512x512'
             }],
