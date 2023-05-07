@@ -5,6 +5,7 @@ definePageMeta({
 const { $dayjs } = useNuxtApp(),
     pending = ref(true),
     route = useRoute(),
+    openedImg = ref(null),
     { data } = useFetch(`https://64566c612e41ccf1691ca819.mockapi.io/api/questions/${route.params.id}`, {
         onResponse({ response }) {
             pending.value = false
@@ -15,7 +16,11 @@ const { $dayjs } = useNuxtApp(),
 <template>
     <ui-loader v-if="pending" class="flex-1 p-5 w-full flex items-center justify-center"/>
     <section v-else class="flex flex-col gap-3 p-5 flex-1 overflow-hidden">
-            <article class="flex align-baseline justify-start gap-4 rounded-3xl pt-4">
+        <template v-if="openedImg">
+            <div @click="openedImg = null" class="bg-default/50 absolute top-0 left-0 h-screen w-screen z-10 p-5"/>
+            <img class="z-20 absolute left-1/2 top-1/2 w-[calc(100vw-2.250rem)] -translate-x-1/2 -translate-y-1/2 rounded-3xl" :src="openedImg" alt="Image opened">
+        </template>
+        <article class="flex align-baseline justify-start gap-4 rounded-3xl pt-4">
                 <img v-if="data.avatar" class="w-10 h-10 rounded-full object-cover shadow-md" :src="data.avatar" alt="Photo de profil">
                 <div class="flex gap-2 items-center w-full">
                     <div class="w-full">
@@ -35,7 +40,15 @@ const { $dayjs } = useNuxtApp(),
                     Question
                 </small>
                 <p class="font-medium">{{ data.content }}</p>
-                <img v-if="data.id == 1" class="mt-3 rounded-3xl object-cover" :src="data.document" alt="Document">
+                <div class="grid grid-cols-7 gap-1 mt-3">
+                    <img v-if="data.id == 1" @click="openedImg = data.document" class="w-10 h-10 rounded-md object-cover" :src="data.document" alt="Document">
+                    <img v-if="data.id == 1" @click="openedImg = data.document" class="w-10 h-10 rounded-md object-cover" :src="data.document" alt="Document">
+                    <img v-if="data.id == 1" @click="openedImg = data.document" class="w-10 h-10 rounded-md object-cover" :src="data.document" alt="Document">
+                    <img v-if="data.id == 1" @click="openedImg = data.document" class="w-10 h-10 rounded-md object-cover" :src="data.document" alt="Document">
+                    <img v-if="data.id == 1" @click="openedImg = data.document" class="w-10 h-10 rounded-md object-cover" :src="data.document" alt="Document">
+                    <img v-if="data.id == 1" @click="openedImg = data.document" class="w-10 h-10 rounded-md object-cover" :src="data.document" alt="Document">
+                    <img v-if="data.id == 1" @click="openedImg = data.document" class="w-10 h-10 rounded-md object-cover" :src="data.document" alt="Document">
+                </div>
             </div>
 
             <div class="flex flex-col flex-1 h-0">
