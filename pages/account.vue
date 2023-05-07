@@ -5,6 +5,7 @@ definePageMeta({
 </script>
 <template>
   <section class="flex-1 p-5">
+    <p class="mb-3 font-medium text-sm">💻 Une description au pif, un genre de bio...</p>
     <div class="flex items-center justify-between gap-2">
       <div class="rounded-full bg-custom-purple text-center px-4 py-2 text-xs text-white">56 followers</div>
       <div class="rounded-full bg-custom-purple text-center px-4 py-2 text-xs text-white">536 following</div>
@@ -12,7 +13,7 @@ definePageMeta({
     </div>
 
     <div>
-      <h2 class="font-semibold mt-8 mb-3">Membre de groupes</h2>
+      <h2 class="font-semibold text-xl mt-8 mb-3">Membre de groupes</h2>
       <div class="flex items-center justify-start gap-2">
         <img class="rounded-md p-1.5 bg-white w-10 h-10 shadow-sm" src="https://sacfunded.net/s/sac-logo-black.png" alt="Groupe logo">
         <div>
@@ -30,24 +31,31 @@ definePageMeta({
     </div>
 
     <div class="mt-10 text-sm">
-      <div class="flex text-light-gray fill-light-gray items-center justify-between bg-white p-5 first:rounded-t-2xl">
+      <div class="flex text-light-gray fill-light-gray items-center justify-between bg-white p-5 first:rounded-t-2xl border-b border-solid border-custom-light-gray">
         <div class="flex items-center justify-start gap-3">
           <svg class="text-xl" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M24 21h-3l1-3h1l1 3zm-12.976-4.543l8.976-4.575v6.118c-1.007 2.041-5.607 3-8.5 3-3.175 0-7.389-.994-8.5-3v-6.614l8.024 5.071zm11.976.543h-1v-7.26l-10.923 5.568-11.077-7 12-5.308 11 6.231v7.769z"/></svg>
           <p>Classe</p>
         </div>
         <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.33 24l-2.83-2.829 9.339-9.175-9.339-9.167 2.83-2.829 12.17 11.996z"/></svg>
       </div>
-      <div class="flex text-light-gray fill-light-gray items-center justify-between bg-white p-5">
+      <div class="flex text-light-gray fill-light-gray items-center justify-between bg-white p-5 border-b border-solid border-custom-light-gray">
         <div class="flex items-center justify-start gap-3">
           <svg class="text-xl" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M13.744 8s1.522-8-3.335-8h-8.409v24h20v-13c0-3.419-5.247-3.745-8.256-3zm.256 11h-8v-1h8v1zm4-3h-12v-1h12v1zm0-3h-12v-1h12v1zm-3.432-12.925c2.202 1.174 5.938 4.883 7.432 6.881-1.286-.9-4.044-1.657-6.091-1.179.222-1.468-.185-4.534-1.341-5.702z"/></svg>
           <p>Cours</p>
         </div>
         <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.33 24l-2.83-2.829 9.339-9.175-9.339-9.167 2.83-2.829 12.17 11.996z"/></svg>
       </div>
-      <div class="flex text-light-gray fill-light-gray items-center justify-between bg-white p-5">
+      <div class="flex text-light-gray fill-light-gray items-center justify-between bg-white p-5 border-b border-solid border-custom-light-gray">
         <div class="flex items-center justify-start gap-3">
           <svg class="text-xl" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M14 13h-4v-4h4v4zm6-4h-4v4h4v-4zm-12 6h-4v4h4v-4zm6 0h-4v4h4v-4zm-6-6h-4v4h4v-4zm16-8v13.386c0 2.391-6.648 9.614-9.811 9.614h-14.189v-23h24zm-2 6h-20v15h11.362c4.156 0 2.638-6 2.638-6s6 1.65 6-2.457v-6.543z"/></svg>
           <p>Learning Plan</p>
+        </div>
+        <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.33 24l-2.83-2.829 9.339-9.175-9.339-9.167 2.83-2.829 12.17 11.996z"/></svg>
+      </div>
+      <div class="flex text-light-gray fill-light-gray items-center justify-between bg-white p-5 border-b border-solid border-custom-light-gray">
+        <div class="flex items-center justify-start gap-3">
+          <svg class="text-xl" width="24" height="24" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m21 4c0-.478-.379-1-1-1h-16c-.62 0-1 .519-1 1v16c0 .621.52 1 1 1h16c.478 0 1-.379 1-1zm-3 11.25c0 .414-.336.75-.75.75h-4.5c-.414 0-.75-.336-.75-.75s.336-.75.75-.75h4.5c.414 0 .75.336.75.75zm-11.772-.537c-.151-.135-.228-.321-.228-.509 0-.375.304-.682.683-.682.162 0 .324.057.455.173l.746.665 1.66-1.815c.136-.147.319-.221.504-.221.381 0 .684.307.684.682 0 .163-.059.328-.179.459l-2.116 2.313c-.134.147-.319.222-.504.222-.162 0-.325-.057-.455-.173zm11.772-2.711c0 .414-.336.75-.75.75h-4.5c-.414 0-.75-.336-.75-.75s.336-.75.75-.75h4.5c.414 0 .75.336.75.75zm-11.772-1.613v.001c-.151-.135-.228-.322-.228-.509 0-.376.304-.682.683-.682.162 0 .324.057.455.173l.746.664 1.66-1.815c.136-.147.319-.221.504-.221.381 0 .684.308.684.682 0 .164-.059.329-.179.46l-2.116 2.313c-.134.147-.319.221-.504.221-.162 0-.325-.057-.455-.173zm11.772-1.639c0 .414-.336.75-.75.75h-4.5c-.414 0-.75-.336-.75-.75s.336-.75.75-.75h4.5c.414 0 .75.336.75.75z" fill-rule="nonzero"/></svg>
+          <p>Jobs</p>
         </div>
         <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M7.33 24l-2.83-2.829 9.339-9.175-9.339-9.167 2.83-2.829 12.17 11.996z"/></svg>
       </div>
