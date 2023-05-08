@@ -21,11 +21,13 @@ const { $dayjs } = useNuxtApp(),
             <img class="z-20 absolute left-1/2 top-1/2 w-[calc(100vw-2.250rem)] -translate-x-1/2 -translate-y-1/2 rounded-3xl" :src="openedImg" alt="Image opened">
         </template>
         <article class="flex align-baseline justify-start gap-4 rounded-3xl pt-4">
-                <img v-if="data.avatar" class="w-10 h-10 rounded-full object-cover shadow-md" :src="data.avatar" alt="Photo de profil">
+                <NuxtLink class="contents" :to="{ name: 'profile-id', params: { id: data.user_id } }">
+                    <img v-if="data.avatar" class="w-10 h-10 rounded-full object-cover shadow-md" :src="data.avatar" alt="Photo de profil">
+                </NuxtLink>
                 <div class="flex gap-2 items-center w-full">
                     <div class="w-full">
                         <div class="flex items-center justify-between">
-                            <p class="text-base font-medium">{{ data.author }}</p>
+                            <NuxtLink :to="{ name: 'profile-id', params: { id: data.user_id } }" class="text-base font-medium">{{ data.author }}</NuxtLink>
                             <small class="text-light-gray">{{ $dayjs(data.createdAt).locale('fr').fromNow() }}</small>
                         </div>
                         <p class="text-xs text-light-gray mt-1">{{ data.job }}</p>

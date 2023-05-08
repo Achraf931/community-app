@@ -27,9 +27,10 @@ const register = () => {
 }
 </script>
 <template>
-  <section class="flex-1 flex flex-col gap-5 items-center justify-center p-5">
+  <section class="flex-1 h-screen bg-custom-light-gray flex flex-col gap-5 items-center justify-center p-5">
+    <h1 class="text-xl font-extrabold dark:text-white">Bienvenue chez <span class="text-custom-purple">Community</span>.</h1>
     <form @submit.prevent="register" class="p-5 flex gap-2 flex-col bg-white shadow-sm rounded-3xl overflow-hidden">
-      <h1 class="font-semibold text-xl text-center mb-5">Boostez votre expérience étudiante en rejoignant <span class="font-bold text-custom-purple">Community</span> !</h1>
+      <h1 class="font-semibold text-xl text-center mb-5">Partage, entraide, conseils avec des milliers d'étudiants !</h1>
       <label for="lastname">
         <input v-model="form.lastname" id="lastname" class="font-medium w-full py-4 px-5 caret-custom-purple rounded-2xl border border-solid border-custom-light-gray focus:border-custom-purple bg-custom-light-gray outline-none" type="text" inputmode="text" placeholder="Nom">
       </label>

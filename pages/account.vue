@@ -13,7 +13,7 @@ definePageMeta({
     </div>
 
     <div>
-      <h2 class="font-semibold text-xl mt-8 mb-3">Membre de groupes</h2>
+      <h2 class="font-semibold text-xl mt-8 mb-3">Membre de :</h2>
       <div class="flex items-center justify-start gap-2">
         <img class="rounded-md p-1.5 bg-white w-10 h-10 shadow-sm" src="https://sacfunded.net/s/sac-logo-black.png" alt="Groupe logo">
         <div>
@@ -31,6 +31,7 @@ definePageMeta({
     </div>
 
     <div class="mt-10 text-sm">
+      <h2 class="font-semibold text-xl mt-8 mb-3">Mon suivi :</h2>
       <div class="flex text-light-gray fill-light-gray items-center justify-between bg-white p-5 first:rounded-t-2xl border-b border-solid border-custom-light-gray">
         <div class="flex items-center justify-start gap-3">
           <svg class="text-xl" width="24" height="24" xmlns="http://www.w3.org/2000/svg" fill-rule="evenodd" clip-rule="evenodd"><path d="M24 21h-3l1-3h1l1 3zm-12.976-4.543l8.976-4.575v6.118c-1.007 2.041-5.607 3-8.5 3-3.175 0-7.389-.994-8.5-3v-6.614l8.024 5.071zm11.976.543h-1v-7.26l-10.923 5.568-11.077-7 12-5.308 11 6.231v7.769z"/></svg>

@@ -14,11 +14,13 @@ const open = ref(false)
 <template>
   <article
     class="snap-start relative flex align-baseline justify-start gap-4 rounded-3xl bg-white shadow-sm p-4">
-    <img class="w-10 h-10 rounded-full object-cover shadow-md" :src="props.data.avatar" alt="Photo de profil">
+    <NuxtLink class="contents" :to="{ name: 'profile-id', params: { id: props.data.user_id } }">
+      <img class="w-10 h-10 rounded-full object-cover shadow-md" :src="props.data.avatar" alt="Photo de profil">
+    </NuxtLink>
     <div class="flex gap-2 items-center w-full">
       <div class="w-full">
         <div class="flex items-center justify-between">
-          <p class="text-base font-medium">{{ props.data.author }}</p>
+          <NuxtLink :to="{ name: 'profile-id', params: { id: props.data.user_id } }" class="text-base font-medium">{{ props.data.author }}</NuxtLink>
           <small :class="first ? 'text-custom-purple fill-custom-purple stroke-custom-purple' : 'text-light-gray fill-light-gray stroke-light-gray'" class="flex items-center justify-center gap-1.5 font-medium">
             <svg class="w-3 h-3"
                  xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
@@ -32,7 +34,7 @@ const open = ref(false)
             }}
           </small>
         </div>
-        <p class="text-xs text-light-gray mt-1 mb-4">{{ props.data.job }}</p>
+        <p class="text-xs text-light-gray mb-4">{{ props.data.job }}</p>
         <p :class="open ? 'line-clamp-none' : 'line-clamp-2'" class="content font-medium text-ellipsis">{{ props.data.content }}</p>
         <small class="font-semibold text-custom-purple" @click="open = !open">Lire {{ open ? 'moins' : 'tout' }}</small>
       </div>
