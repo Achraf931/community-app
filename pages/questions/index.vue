@@ -33,11 +33,18 @@ const closeSearch = () => {
     searchResults.value = []
     isTyping.value = false
 }
+
+const matchingText = (elem) => {
+    if(!query.value) return elem
+    return elem.replace(new RegExp(query.value, "gi"), match => {
+        return `<span class="font-bold text-custom-purple">${match}</span>`
+    })
+}
 </script>
 <template>
     <ui-loader v-if="pending" class="flex-1 p-5 w-full flex items-center justify-center"/>
     <template v-else>
-        <div v-if="searchMode" @click="closeSearch" class="absolute top-0 left-0 w-screen h-screen bg-default/50"></div>
+        <div v-if="searchMode" @click="closeSearch" class="absolute backdrop-blur-sm z-20 top-0 left-0 w-screen h-screen bg-default/50"></div>
         <div class="relative p-5">
             <label for="search"
                    class="relative flex items-center justify-start gap-4 rounded-full w-full bg-white shadow-sm">
@@ -46,15 +53,15 @@ const closeSearch = () => {
                      stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path d="m15.97 17.031c-1.479 1.238-3.384 1.985-5.461 1.985-4.697 0-8.509-3.812-8.509-8.508s3.812-8.508 8.509-8.508c4.695 0 8.508 3.812 8.508 8.508 0 2.078-.747 3.984-1.985 5.461l4.749 4.75c.146.146.219.338.219.531 0 .587-.537.75-.75.75-.192 0-.384-.073-.531-.22zm-5.461-13.53c-3.868 0-7.007 3.14-7.007 7.007s3.139 7.007 7.007 7.007c3.866 0 7.007-3.14 7.007-7.007s-3.141-7.007-7.007-7.007z"/>
                 </svg>
-                <input id="search" autocomplete="false" :class="{ 'z-10': searchMode }" class="p-4 pl-14 w-full rounded-full outline-none" type="search"
+                <input id="search" autocomplete="false" :class="{ 'z-20': searchMode }" class="p-4 pl-14 w-full rounded-full outline-none" type="search"
                        placeholder="Taper votre question" @input="searching" v-model="query" @focus="searchMode = true">
             </label>
 
-            <div class="absolute top-full left-0 px-5 py-0 max-h-[390px] w-full">
+            <div class="absolute top-full z-20 left-0 px-5 py-0 max-h-[390px] w-full">
                 <p v-if="query !== '' && !isTyping && searchResults.length === 0" class="rounded-full bg-white text-center p-4 font-medium text-sm">Aucun résultat</p>
                 <div v-else class="rounded-3xl max-h-[390px] overflow-auto snap-y">
                     <NuxtLink :to="{ name: 'questions-id', params: { id: result.id } }" v-for="result in searchResults" :key="result.id" class="snap-start flex gap-3 items-center justify-between bg-white first:rounded-t-3xl last:rounded-b-3xl p-5 text-sm border-b border-solid border-custom-purple">
-                        <p class="font-medium">{{ result.content }}</p>
+                        <p class="font-medium" v-html="matchingText(result.content)" />
                         <div class="text-center fill-custom-purple text-custom-purple">
                             <svg class="w-3 h-3 mx-auto" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M5 22h-5v-12h5v12zm17.615-8.412c-.857-.115-.578-.734.031-.922.521-.16 1.354-.5 1.354-1.51 0-.672-.5-1.562-2.271-1.49-1.228.05-3.666-.198-4.979-.885.906-3.656.688-8.781-1.688-8.781-1.594 0-1.896 1.807-2.375 3.469-1.221 4.242-3.312 6.017-5.687 6.885v10.878c4.382.701 6.345 2.768 10.505 2.768 3.198 0 4.852-1.735 4.852-2.666 0-.335-.272-.573-.96-.626-.811-.062-.734-.812.031-.953 1.268-.234 1.826-.914 1.826-1.543 0-.529-.396-1.022-1.098-1.181-.837-.189-.664-.757.031-.812 1.133-.09 1.688-.764 1.688-1.41 0-.565-.424-1.109-1.26-1.221z"/></svg>
                             <span class="text-xs">{{ result.likes }}</span>

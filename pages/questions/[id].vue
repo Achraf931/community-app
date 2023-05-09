@@ -6,6 +6,7 @@ const { $dayjs } = useNuxtApp(),
     pending = ref(true),
     route = useRoute(),
     openedImg = ref(null),
+    more = ref(true),
     { data } = useFetch(`https://64566c612e41ccf1691ca819.mockapi.io/api/questions/${route.params.id}`, {
         onResponse({ response }) {
             pending.value = false
@@ -41,8 +42,8 @@ const { $dayjs } = useNuxtApp(),
                     </svg>
                     Question
                 </small>
-                <p class="font-medium">{{ data.content }}</p>
-                <div class="grid grid-cols-7 gap-1 mt-3">
+                <p :class="more ? 'line-clamp-none' : 'line-clamp-2'" class="font-medium text-ellipsis">{{ data.content }}</p>
+                <div v-if="more" class="grid grid-cols-7 gap-1 mt-3">
                     <img v-if="data.id == 1" @click="openedImg = data.document" class="w-10 h-10 rounded-md object-cover" :src="data.document" alt="Document">
                     <img v-if="data.id == 1" @click="openedImg = data.document" class="w-10 h-10 rounded-md object-cover" :src="data.document" alt="Document">
                     <img v-if="data.id == 1" @click="openedImg = data.document" class="w-10 h-10 rounded-md object-cover" :src="data.document" alt="Document">
@@ -51,11 +52,12 @@ const { $dayjs } = useNuxtApp(),
                     <img v-if="data.id == 1" @click="openedImg = data.document" class="w-10 h-10 rounded-md object-cover" :src="data.document" alt="Document">
                     <img v-if="data.id == 1" @click="openedImg = data.document" class="w-10 h-10 rounded-md object-cover" :src="data.document" alt="Document">
                 </div>
+                <small class="font-semibold block text-custom-purple mt-1" @click="more = !more">Lire {{ more ? 'moins' : 'tout' }}</small>
             </div>
 
             <div class="flex flex-col flex-1 h-0">
                 <div class="flex items-center justify-between">
-                    <h2 class="font-semibold text-xl mt-5 mb-4">Réponses</h2>
+                    <h2 class="font-semibold text-xl mt-2 mb-4">Réponses</h2>
                     <svg class="w-5 h-5" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round"
                          stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="m15.344 17.778c0-.414-.336-.75-.75-.75h-5.16c-.414 0-.75.336-.75.75s.336.75.75.75h5.16c.414 0 .75-.336.75-.75zm2.206-4c0-.414-.336-.75-.75-.75h-9.596c-.414 0-.75.336-.75.75s.336.75.75.75h9.596c.414 0 .75-.336.75-.75zm2.45-4c0-.414-.336-.75-.75-.75h-14.5c-.414 0-.75.336-.75.75s.336.75.75.75h14.5c.414 0 .75-.336.75-.75zm2-4c0-.414-.336-.75-.75-.75h-18.5c-.414 0-.75.336-.75.75s.336.75.75.75h18.5c.414 0 .75-.336.75-.75z"
