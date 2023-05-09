@@ -40,7 +40,7 @@ onClickOutside(target, () => open.value = false)
         <div class="flex items-center justify-between">
           <NuxtLink :to="{ name: 'profile-id', params: { id: props.data.user_id } }" class="text-base font-medium">{{ props.data.author }}</NuxtLink>
           <div ref="target" class="relative inline-block text-left">
-            <svg @click="open = !open" :class="open ? 'fill-custom-purple' : 'fill-mid-gray'" class="block w-6 transition-all duration-150 ease-in-out outline-0" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m16.5 11.995c0-1.242 1.008-2.25 2.25-2.25s2.25 1.008 2.25 2.25-1.008 2.25-2.25 2.25-2.25-1.008-2.25-2.25zm-6.75 0c0-1.242 1.008-2.25 2.25-2.25s2.25 1.008 2.25 2.25-1.008 2.25-2.25 2.25-2.25-1.008-2.25-2.25zm-6.75 0c0-1.242 1.008-2.25 2.25-2.25s2.25 1.008 2.25 2.25-1.008 2.25-2.25 2.25-2.25-1.008-2.25-2.25z"/></svg>
+            <svg @click="open = !open" :class="open ? 'fill-custom-purple' : 'fill-light-gray'" class="block w-6 transition-all duration-150 ease-in-out outline-0" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m16.5 11.995c0-1.242 1.008-2.25 2.25-2.25s2.25 1.008 2.25 2.25-1.008 2.25-2.25 2.25-2.25-1.008-2.25-2.25zm-6.75 0c0-1.242 1.008-2.25 2.25-2.25s2.25 1.008 2.25 2.25-1.008 2.25-2.25 2.25-2.25-1.008-2.25-2.25zm-6.75 0c0-1.242 1.008-2.25 2.25-2.25s2.25 1.008 2.25 2.25-1.008 2.25-2.25 2.25-2.25-1.008-2.25-2.25z"/></svg>
 
             <transition
               enter-active-class="ease-out"
@@ -55,12 +55,12 @@ onClickOutside(target, () => open.value = false)
               mode="out-in"
               appear
             >
-              <div v-show="open" class="duration-150 absolute right-0 z-10 w-56 origin-top-right rounded-md bg-mid-gray shadow-sm focus:outline-none overflow-hidden" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+              <div v-show="open" class="duration-150 absolute right-0 z-10 w-56 origin-top-right rounded-md bg-white shadow-xl focus:outline-none overflow-hidden" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
                 <div role="none">
-                  <p class="hover:bg-light-gray text-custom-white block px-4 font-medium py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Signaler</p>
-                  <p class="hover:bg-light-gray text-custom-white block px-4 font-medium py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">Partager</p>
-                  <p class="hover:bg-light-gray text-custom-white block px-4 font-medium py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-2">Masquer</p>
-                  <p class="hover:bg-light-gray text-custom-white block px-4 font-medium py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-3">Ajouter aux favoris</p>
+                  <p class="hover:bg-custom-purple hover:text-white text-default block px-4 font-medium py-3 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Signaler</p>
+                  <p class="hover:bg-custom-purple hover:text-white text-default block px-4 font-medium py-3 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">Partager</p>
+                  <p class="hover:bg-custom-purple hover:text-white text-default block px-4 font-medium py-3 text-sm" role="menuitem" tabindex="-1" id="menu-item-2">Masquer</p>
+                  <p class="hover:bg-custom-purple hover:text-white text-default block px-4 font-medium py-3 text-sm" role="menuitem" tabindex="-1" id="menu-item-3">Ajouter aux favoris</p>
                 </div>
               </div>
             </transition>
