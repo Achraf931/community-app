@@ -7,7 +7,7 @@
       <div class="flex gap-2 items-center w-full">
         <div class="w-full">
           <p class="font-medium">Revolut</p>
-          <p class="text-xs mb-4">Téléchargez Revolut et profitez mieux de votre argent chaque jour</p>
+          <p class="text-xs text-light-gray mb-4">Téléchargez Revolut et profitez mieux de votre argent chaque jour</p>
           <p class="text-xs font-medium text-light-gray"><span class="py-0.5 px-1 rounded-md mr-1 bg-custom-purple text-white font-medium">Ad</span> revolut.com</p>
         </div>
       </div>

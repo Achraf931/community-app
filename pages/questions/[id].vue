@@ -15,7 +15,7 @@ const { $dayjs } = useNuxtApp(),
 </script>
 <template>
     <ui-loader v-if="pending" class="flex-1 p-5 w-full flex items-center justify-center"/>
-    <section v-else class="flex flex-col gap-3 p-5 flex-1 overflow-hidden">
+    <section v-else class="flex flex-col gap-3 p-5 pb-0 flex-1 overflow-hidden">
         <template v-if="openedImg">
             <div @click="openedImg = null" class="bg-default/50 absolute top-0 left-0 h-screen w-screen z-10 p-5"/>
             <img class="z-20 absolute left-1/2 top-1/2 w-[calc(100vw-2.250rem)] -translate-x-1/2 -translate-y-1/2 rounded-3xl" :src="openedImg" alt="Image opened">
@@ -64,7 +64,7 @@ const { $dayjs } = useNuxtApp(),
                 </div>
                 <div class="flex flex-col gap-5 flex-1 overflow-auto snap-y">
                     <ui-response :data="data" :first="true" />
-                    <ui-response :data="data" v-for="index in 6" :key="index" />
+                    <ui-response :data="data" v-for="index in 6" :key="index" class="last:mb-5" />
                 </div>
             </div>
     </section>
