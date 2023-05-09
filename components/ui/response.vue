@@ -61,10 +61,10 @@ onClickOutside(target, () => open.value = false)
             >
               <div v-show="open" class="duration-150 absolute right-0 z-10 w-56 origin-top-right rounded-md bg-white shadow-xl focus:outline-none overflow-hidden" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
                 <div role="none">
-                  <p class="hover:bg-custom-purple hover:text-white text-default block px-4 font-medium py-3 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Signaler</p>
+                  <p class="hover:bg-custom-purple hover:text-white text-default block px-4 font-medium py-3 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Ajouter aux favoris</p>
                   <p class="hover:bg-custom-purple hover:text-white text-default block px-4 font-medium py-3 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">Partager</p>
                   <p class="hover:bg-custom-purple hover:text-white text-default block px-4 font-medium py-3 text-sm" role="menuitem" tabindex="-1" id="menu-item-2">Masquer</p>
-                  <p class="hover:bg-custom-purple hover:text-white text-default block px-4 font-medium py-3 text-sm" role="menuitem" tabindex="-1" id="menu-item-3">Ajouter aux favoris</p>
+                  <p class="hover:bg-custom-purple hover:text-white text-default block px-4 font-medium py-3 text-sm" role="menuitem" tabindex="-1" id="menu-item-3">Signaler</p>
                 </div>
               </div>
             </transition>
