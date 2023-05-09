@@ -18,9 +18,10 @@ onClickOutside(target, () => open.value = false)
 <template>
   <article
     class="snap-start relative flex align-baseline justify-start gap-4 rounded-3xl bg-white shadow-sm p-4">
-    <NuxtLink class="contents" :to="{ name: 'profile-id', params: { id: props.data.user_id } }">
       <div class="flex flex-col justify-between items-center">
-        <img class="w-10 h-10 rounded-full object-cover shadow-md" :src="props.data.avatar" alt="Photo de profil">
+        <NuxtLink class="contents" :to="{ name: 'profile-id', params: { id: props.data.user_id } }">
+          <img class="w-10 h-10 rounded-full object-cover shadow-md" :src="props.data.avatar" alt="Photo de profil">
+        </NuxtLink>
         <div v-if="first" class="flex items-center justify-center flex-col">
           <svg class="w-5 h-5 fill-custom-purple" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.326 18.266l-4.326-2.314-4.326 2.313.863-4.829-3.537-3.399 4.86-.671 2.14-4.415 2.14 4.415 4.86.671-3.537 3.4.863 4.829z"/></svg>
           <p class="text-xs text-custom-purple font-semibold">Top</p>
@@ -38,7 +39,6 @@ onClickOutside(target, () => open.value = false)
           }}
       </small>
       </div>
-    </NuxtLink>
     <div class="flex gap-2 items-center w-full">
       <div class="w-full">
         <div class="flex items-center justify-between">
