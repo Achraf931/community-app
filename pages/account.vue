@@ -2,13 +2,18 @@
 definePageMeta({
     layout: 'account'
 })
+const userData = reactive({})
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
-  const { data, error } = await supabase
-      .from('profiles')
-      .select('*')
-      .eq('user_id', user.value?.id)
-      .single()
+watchEffect(async () => {
+    if (!user.value) return
+    const { data, error } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('user_id', user.value?.id)
+        .single()
+    userData.value = data
+})
   const logout = async () => {
       try {
           let { error } = await supabase.auth.signOut()
@@ -28,15 +33,15 @@ definePageMeta({
         <div class="flex items-center justify-start gap-3">
           <img class="w-10 h-10 p-0.5 mx-auto rounded-full object-cover border border-solid border-custom-purple" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOs4NnmB39-e9lGrvN3GkdftbUyHCTS_7rf0lmhLbRxg&s" alt="Photo de profil">
           <div>
-            <p class="font-bold text-xl">{{ data?.lastname }} {{ data?.firstname }}</p>
-            <p class="text-xs text-light-gray">{{ data?.job }} <span v-if="data?.company">chez {{ data?.company }}</span></p>
+            <p class="font-bold text-xl">{{ userData.value?.lastname }} {{ userData.value?.firstname }}</p>
+            <p class="text-xs text-light-gray">{{ userData.value?.job }} <span v-if="userData.value?.company">chez {{ userData.value?.company }}</span></p>
           </div>
         </div>
       </div>
     </header>
     <section class="flex flex-col justify-between items-start gap-5 flex-1 p-5">
       <div>
-        <p class="mb-3 font-medium text-sm">{{ data?.description }}</p>
+        <p class="mb-3 font-medium text-sm">{{ userData.value?.description }}</p>
         <div class="flex items-center justify-between gap-2">
           <div class="rounded-full bg-custom-purple text-center px-4 py-2 text-xs text-white">56 followers</div>
           <div class="rounded-full bg-custom-purple text-center px-4 py-2 text-xs text-white">536 following</div>

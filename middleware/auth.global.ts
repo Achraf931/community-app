@@ -1,14 +1,11 @@
-export default defineNuxtRouteMiddleware((to) => {
+export default defineNuxtRouteMiddleware((to, from) => {
+    const router = useRouter()
     const supabase = useSupabaseClient()
     supabase.auth.onAuthStateChange((event, session) => {
-        console.log(session, event)
-        if (session && session.user) {
-            console.log(session.user)
-            if (!session.user && to.path !== '/login' && to.path !== '/register') {
-                return navigateTo('/login',{ redirectCode: 301 })
-            } else if (session.user && (to.path === '/login' || to.path === '/register')) {
-                return navigateTo('/',{ redirectCode: 301 })
-            }
+        if (!session?.user && to.path !== '/login' && to.path !== '/register') {
+            return router.push('/login')
+        } else if (session?.user && (to.path === '/login' || to.path === '/register')) {
+            return router.push('/')
         }
     })
 })
