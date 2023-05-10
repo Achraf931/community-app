@@ -1,7 +1,6 @@
 <script setup>
 definePageMeta({
-    layout: 'questions',
-    middleware: 'auth'
+    layout: 'questions'
 })
 const pending = ref(true),
     query = ref(''),

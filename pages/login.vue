@@ -2,8 +2,7 @@
 const supabase = useSupabaseClient()
 const user = useSupabaseUser()
 definePageMeta({
-    layout: 'sign',
-    middleware: ['auth']
+    layout: 'sign'
 })
 const loading = ref(false)
 const form = reactive({
@@ -22,6 +21,7 @@ const handleLogin = async () => {
             alert(error.error_description || error.message)
         } finally {
             loading.value = false
+            console.log(user.value)
             await navigateTo('/', { redirectCode: 301 })
         }
     }
@@ -29,8 +29,9 @@ const handleLogin = async () => {
 
 onMounted(() => {
     watchEffect(() => {
-        console.log(user.value)
-        if (user.value) return navigateTo('/', { redirectCode: 301 });
+        if (user.value) {
+            navigateTo('/', { redirectCode: 301 })
+        }
     })
 })
 </script>

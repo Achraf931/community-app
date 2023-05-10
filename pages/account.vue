@@ -1,7 +1,6 @@
 <script setup>
 definePageMeta({
-    layout: 'account',
-    middleware: 'auth'
+    layout: 'account'
 })
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()

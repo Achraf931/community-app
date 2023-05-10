@@ -1,7 +1,6 @@
 <script setup>
 definePageMeta({
-    layout: 'questions',
-    middleware: 'auth'
+    layout: 'questions'
 })
 const { $dayjs } = useNuxtApp(),
     pending = ref(true),

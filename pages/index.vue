@@ -1,7 +1,4 @@
 <script setup>
-definePageMeta({
-    middleware: 'auth'
-})
 const pending = ref(true),
     query = ref(''),
     searchResults = ref([]),
