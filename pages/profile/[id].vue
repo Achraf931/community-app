@@ -1,6 +1,7 @@
 <script setup>
 definePageMeta({
-    layout: 'profile'
+    layout: 'profile',
+    middleware: 'auth'
 })
 </script>
 <template>

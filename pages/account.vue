@@ -1,6 +1,7 @@
 <script setup>
 definePageMeta({
-    layout: 'account'
+    layout: 'account',
+    middleware: 'auth'
 })
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
@@ -11,9 +12,11 @@ definePageMeta({
       .single()
   const logout = async () => {
       try {
-          await supabase.auth.signOut()
+          let { error } = await supabase.auth.signOut()
+          if (error) throw error
+          user.value = null
       } catch (error) {
-          console.log(error)
+          alert(error.message)
       } finally {
           navigateTo({ name: 'login' })
       }

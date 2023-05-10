@@ -2,7 +2,8 @@
 const supabase = useSupabaseClient()
 const user = useSupabaseUser()
 definePageMeta({
-    layout: 'sign'
+    layout: 'sign',
+    middleware: ['logged-in']
 })
 const loading = ref(false)
 const form = reactive({
