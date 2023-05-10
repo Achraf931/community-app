@@ -18,21 +18,11 @@ const handleLogin = async () => {
             if (error) throw error
             user.value = data.user
             loading.value = false
-            console.log(user.value)
-            await router.push('/')
         } catch (error) {
             alert(error.error_description || error.message)
         }
     }
 }
-
-onMounted(() => {
-    watchEffect(() => {
-        if (user.value) {
-            navigateTo('/', { redirectCode: 301 })
-        }
-    })
-})
 </script>
 <template>
     <section class="flex-1 flex flex-col gap-5 items-center justify-center p-5">
