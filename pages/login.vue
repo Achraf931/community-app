@@ -15,15 +15,13 @@ const handleLogin = async () => {
         try {
             loading.value = true
             const { error, data } = await supabase.auth.signInWithPassword({ email: form.email, password: form.password })
-            user.value = data.user
-            console.log(data)
             if (error) throw error
-        } catch (error) {
-            alert(error.error_description || error.message)
-        } finally {
+            user.value = data.user
             loading.value = false
             console.log(user.value)
             await router.push('/')
+        } catch (error) {
+            alert(error.error_description || error.message)
         }
     }
 }
