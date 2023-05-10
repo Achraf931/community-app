@@ -5,16 +5,14 @@ definePageMeta({
 const supabase = useSupabaseClient()
 const user = useSupabaseUser()
 const userData = reactive({})
-onMounted(() => {
-    watchEffect(async () => {
-        if (!user.value) return
-        const {data, error} = await supabase
-            .from('profiles')
-            .select('*')
-            .eq('user_id', user.value?.id)
-            .single()
-        userData.value = data
-    })
+watchEffect(async () => {
+    if (!user.value) return
+    const {data, error} = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('user_id', user.value?.id)
+        .single()
+    userData.value = data
 })
 const logout = async () => {
     try {
