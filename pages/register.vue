@@ -1,5 +1,6 @@
 <script setup>
 const supabase = useSupabaseClient()
+const user = useSupabaseUser()
 definePageMeta({
     layout: 'sign'
 })
@@ -34,6 +35,10 @@ const handleRegister = async () => {
         }
     }
 }
+
+watchEffect(() => {
+    if (user.value) return navigateTo('/')
+})
 </script>
 <template>
   <section class="flex-1 h-screen bg-custom-light-gray flex flex-col gap-5 items-center justify-center p-5">
