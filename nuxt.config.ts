@@ -1,9 +1,4 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-// @ts-ignore
-// @ts-ignore
-// @ts-ignore
-// @ts-ignore
-// @ts-ignore
 export default defineNuxtConfig({
     app: {
         head: {
@@ -11,6 +6,7 @@ export default defineNuxtConfig({
         }
     },
     modules: [
+        '@nuxtjs/supabase',
         '@vueuse/nuxt',
         '@kevinmarrec/nuxt-pwa'
     ],
