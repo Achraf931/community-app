@@ -1,6 +1,7 @@
 <script setup>
 const supabase = useSupabaseClient()
 const user = useSupabaseUser()
+const router = useRouter()
 definePageMeta({
     layout: 'sign'
 })
@@ -22,7 +23,7 @@ const handleLogin = async () => {
         } finally {
             loading.value = false
             console.log(user.value)
-            await navigateTo('/', { redirectCode: 301 })
+            await router.push('/')
         }
     }
 }
