@@ -1,5 +1,6 @@
 <script setup>
 const supabase = useSupabaseClient()
+const user = useSupabaseUser()
 definePageMeta({
     layout: 'sign',
     middleware: ['auth']
@@ -16,7 +17,7 @@ const handleRegister = async () => {
     if (form.lastname !== '' && form.firstname !== '' && form.email !== '' && form.password !== '') {
         try {
             loading.value = true
-            const { error } = await supabase.auth.signUp({
+            const { error, data } = await supabase.auth.signUp({
                 email: form.email,
                 password: form.password,
                 options: {
@@ -27,6 +28,8 @@ const handleRegister = async () => {
                 }
             })
             if (error) throw error
+            user.value = data.user
+            console.log(data)
         } catch (error) {
             console.log(error)
         } finally {
@@ -36,9 +39,9 @@ const handleRegister = async () => {
     }
 }
 
-const user = useSupabaseUser()
 onMounted(() => {
     watchEffect(() => {
+        console.log(user.value)
         if (user.value) return navigateTo('/', { redirectCode: 301 });
     })
 })
