@@ -6,10 +6,10 @@ definePageMeta({
 })
 const loading = ref(false)
 const form = reactive({
-        lastname: 'Doe',
-        firstname: 'John',
-        email: 'compte@test.fr',
-        password: 'password'
+        lastname: '',
+        firstname: '',
+        email: '',
+        password: ''
     })
 
 const handleRegister = async () => {
@@ -31,13 +31,13 @@ const handleRegister = async () => {
             console.log(error)
         } finally {
             loading.value = false
-            navigateTo('/')
+            await navigateTo('/', { redirectCode: 301 })
         }
     }
 }
 
 watchEffect(() => {
-    if (user.value) return navigateTo('/')
+    if (user.value) return navigateTo('/', { redirectCode: 301 });
 })
 </script>
 <template>
