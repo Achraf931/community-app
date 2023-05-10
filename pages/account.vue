@@ -6,6 +6,7 @@ const userData = reactive({})
   const supabase = useSupabaseClient()
   const user = useSupabaseUser()
 watchEffect(async () => {
+    console.log(user.value)
     if (!user.value) return
     const { data, error } = await supabase
         .from('profiles')
