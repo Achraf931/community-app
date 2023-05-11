@@ -14,6 +14,7 @@ watchEffect(async () => {
         .eq('id', user?.id)
         .single()
     userData.value = data
+    console.log(userData.value)
 })
 const logout = async () => {
     try {
