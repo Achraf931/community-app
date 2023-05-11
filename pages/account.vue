@@ -5,19 +5,11 @@ definePageMeta({
 })
 const supabase = useSupabaseClient()
 const user = (await supabase.auth.getSession()).data?.session?.user
-const userData = reactive({})
-console.log('1', user)
-watchEffect(async () => {
-    if (!user) return
-    console.log('2', user)
-    const {data, error} = await supabase
-        .from('users')
-        .select('*')
-        .eq('id', user?.id)
-        .single()
-    userData.value = data
-    console.log(userData.value)
-})
+const {data} = await supabase
+    .from('users')
+    .select('*')
+    .eq('id', user?.id)
+    .single()
 const logout = async () => {
     try {
         let {error} = await supabase.auth.signOut()
@@ -35,19 +27,19 @@ const logout = async () => {
       <div class="flex items-center justify-between w-full gap-3">
         <div class="flex items-center justify-start gap-3">
           <img class="w-10 h-10 p-0.5 mx-auto rounded-full object-cover border border-solid border-custom-purple"
-               :src="userData.value?.avatar_url"
+               :src="data?.avatar_url"
                alt="Photo de profil">
           <div>
-            <p class="font-bold text-xl">{{ userData.value?.lastname }} {{ userData.value?.firstname }}</p>
-            <p class="text-xs text-light-gray">{{ userData.value?.job }} <span
-              v-if="userData.value?.company">chez {{ userData.value?.company }}</span></p>
+            <p class="font-bold text-xl">{{ data?.lastname }} {{ data?.firstname }}</p>
+            <p class="text-xs text-light-gray">{{ data?.job }} <span
+              v-if="data?.company">chez {{ data?.company }}</span></p>
           </div>
         </div>
       </div>
     </header>
     <section class="flex flex-col justify-between items-start gap-5 flex-1 p-5">
       <div>
-        <p class="mb-3 font-medium text-sm">{{ userData.value?.description }}</p>
+        <p class="mb-3 font-medium text-sm">{{ data?.description }}</p>
         <div class="flex items-center justify-between gap-2">
           <div class="rounded-full bg-custom-purple text-center px-4 py-2 text-xs text-white">56 followers</div>
           <div class="rounded-full bg-custom-purple text-center px-4 py-2 text-xs text-white">536 following</div>
