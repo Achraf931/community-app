@@ -8,7 +8,7 @@ const user = (await supabase.auth.getSession()).data?.session?.user
 const {data} = await supabase
     .from('users')
     .select('*')
-    .eq('id', user?.id)
+    .eq('id', user.id)
     .single()
 console.log(user)
 console.log(data)
