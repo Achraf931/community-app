@@ -5,13 +5,6 @@ definePageMeta({
 })
 const supabase = useSupabaseClient()
 const user = (await supabase.auth.getSession()).data?.session?.user
-const {data} = await supabase
-    .from('users')
-    .select('*')
-    .eq('id', user.id)
-    .single()
-console.log(user)
-console.log(data)
 const logout = async () => {
     try {
         let {error} = await supabase.auth.signOut()
@@ -29,19 +22,20 @@ const logout = async () => {
       <div class="flex items-center justify-between w-full gap-3">
         <div class="flex items-center justify-start gap-3">
           <img class="w-10 h-10 p-0.5 mx-auto rounded-full object-cover border border-solid border-custom-purple"
-               :src="data?.avatar_url"
+               :src="user.user_metadata?.avatar_url"
                alt="Photo de profil">
           <div>
-            <p class="font-bold text-xl">{{ data?.lastname }} {{ data?.firstname }}</p>
-            <p class="text-xs text-light-gray">{{ data?.job }} <span
-              v-if="data?.company">chez {{ data?.company }}</span></p>
+            <p class="font-bold text-xl">{{ user.user_metadata?.lastname }} {{ user.user_metadata?.firstname }}</p>
+            <p v-if="user.user_metadata?.job" class="text-xs text-light-gray">{{ user.user_metadata?.job }} <span
+              v-if="user.user_metadata?.company">chez {{ user.user_metadata?.company }}</span>
+            </p>
           </div>
         </div>
       </div>
     </header>
     <section class="flex flex-col justify-between items-start gap-5 flex-1 p-5">
       <div>
-        <p class="mb-3 font-medium text-sm">{{ data?.description }}</p>
+        <p v-if="user.user_metadata?.description" class="mb-3 font-medium text-sm">{{ user.user_metadata?.description }}</p>
         <div class="flex items-center justify-between gap-2">
           <div class="rounded-full bg-custom-purple text-center px-4 py-2 text-xs text-white">56 followers</div>
           <div class="rounded-full bg-custom-purple text-center px-4 py-2 text-xs text-white">536 following</div>
