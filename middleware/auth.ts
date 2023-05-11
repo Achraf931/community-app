@@ -1,7 +1,8 @@
-export default defineNuxtRouteMiddleware(async (to, from) => {
-    const user = useSupabaseUser()
-    const router = useRouter()
-    if (!user) {
+export default defineNuxtRouteMiddleware(async () => {
+    const supabase = useSupabaseClient()
+    const { session } = (await supabase.auth.getSession()).data
+    if (!session) {
+        const router = useRouter()
         return router.push('/login')
     }
 })
