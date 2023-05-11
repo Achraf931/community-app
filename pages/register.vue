@@ -1,62 +1,58 @@
 <script setup>
 const supabase = useSupabaseClient()
-const user = useSupabaseUser()
+const router = useRouter()
 definePageMeta({
-    layout: 'sign'
+    layout: 'sign',
+    middleware: 'guest'
 })
 const loading = ref(false)
 const form = reactive({
         lastname: '',
         firstname: '',
         email: '',
-        password: ''
+        password: '',
+        avatar_url: ''
     })
-
 const handleRegister = async () => {
     if (form.lastname !== '' && form.firstname !== '' && form.email !== '' && form.password !== '') {
         try {
             loading.value = true
-            const { error, data } = await supabase.auth.signUp({
+            const { error } = await supabase.auth.signUp({
                 email: form.email,
                 password: form.password,
                 options: {
                     data: {
                         lastname: form.lastname,
-                        firstname: form.firstname
+                        firstname: form.firstname,
+                        email: form.email,
+                        avatar_url: form.avatar_url || 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOs4NnmB39-e9lGrvN3GkdftbUyHCTS_7rf0lmhLbRxg&s'
                     }
                 }
             })
             if (error) throw error
-            user.value = data.user
-            console.log(data)
+            loading.value = false
+            await router.push('/')
         } catch (error) {
             console.log(error)
-        } finally {
             loading.value = false
-            await navigateTo('/', { redirectCode: 301 })
         }
     }
 }
-
-onMounted(() => {
-    watchEffect(() => {
-        if (user.value) {
-            navigateTo('/', { redirectCode: 301 })
-        }
-    })
-})
 </script>
 <template>
   <section class="flex-1 h-screen bg-custom-light-gray flex flex-col gap-5 items-center justify-center p-5">
     <form @submit.prevent="handleRegister" class="p-5 flex gap-2 flex-col bg-white shadow-sm rounded-3xl overflow-hidden">
       <h1 class="text-xl font-extrabold mb-5">Bienvenue dans <span class="text-custom-purple">Community</span>.</h1>
       <h1 class="font-semibold text-center mb-5">Une question ? Toutes les réponses se trouvent ici 👇</h1>
-      <label for="lastname">
-        <input v-model="form.lastname" id="lastname" class="font-medium w-full py-4 px-5 caret-custom-purple rounded-2xl border border-solid border-custom-light-gray focus:border-custom-purple bg-custom-light-gray outline-none" type="text" inputmode="text" placeholder="Nom">
+      <label for="avatar_url">
+        <input v-model="form.avatar_url" id="avatar_url" class="font-medium w-full py-4 px-5 caret-custom-purple rounded-2xl border border-solid border-custom-light-gray focus:border-custom-purple bg-custom-light-gray outline-none" type="text" inputmode="text" placeholder="URL photo de profil">
       </label>
       <label for="firstname">
         <input v-model="form.firstname" id="firstname" class="font-medium w-full py-4 px-5 caret-custom-purple rounded-2xl border border-solid border-custom-light-gray focus:border-custom-purple bg-custom-light-gray outline-none" type="text" inputmode="text" placeholder="Prénom">
       </label>
+        <label for="lastname">
+            <input v-model="form.lastname" id="lastname" class="font-medium w-full py-4 px-5 caret-custom-purple rounded-2xl border border-solid border-custom-light-gray focus:border-custom-purple bg-custom-light-gray outline-none" type="text" inputmode="text" placeholder="Nom">
+        </label>
       <label for="email">
         <input v-model="form.email" id="email" class="font-medium w-full py-4 px-5 caret-custom-purple rounded-2xl border border-solid border-custom-light-gray focus:border-custom-purple bg-custom-light-gray outline-none" type="email" inputmode="email" placeholder="E-mail">
       </label>

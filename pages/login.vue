@@ -1,9 +1,8 @@
 <script setup>
 const supabase = useSupabaseClient()
-const user = useSupabaseUser()
-const router = useRouter()
 definePageMeta({
-    layout: 'sign'
+    layout: 'sign',
+    middleware: 'guest'
 })
 const loading = ref(false)
 const form = reactive({
@@ -14,15 +13,13 @@ const handleLogin = async () => {
     if (form.email !== '' && form.password !== '') {
         try {
             loading.value = true
-            const { error, data } = await supabase.auth.signInWithPassword({ email: form.email, password: form.password })
+            const { error } = await supabase.auth.signInWithPassword({ email: form.email, password: form.password })
             if (error) throw error
-            user.value = data.user
             loading.value = false
+            await router.push('/')
         } catch (error) {
             alert(error.error_description || error.message)
-        } finally {
-            console.log('ciao')
-            await router.push('/')
+            loading.value = false
         }
     }
 }

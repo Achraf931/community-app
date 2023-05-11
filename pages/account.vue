@@ -9,9 +9,9 @@ const userData = reactive({})
 watchEffect(async () => {
     if (!user) return
     const {data, error} = await supabase
-        .from('profiles')
+        .from('users')
         .select('*')
-        .eq('user_id', user?.id)
+        .eq('id', user?.id)
         .single()
     userData.value = data
 })
@@ -32,7 +32,7 @@ const logout = async () => {
       <div class="flex items-center justify-between w-full gap-3">
         <div class="flex items-center justify-start gap-3">
           <img class="w-10 h-10 p-0.5 mx-auto rounded-full object-cover border border-solid border-custom-purple"
-               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOs4NnmB39-e9lGrvN3GkdftbUyHCTS_7rf0lmhLbRxg&s"
+               :src="userData.value?.avatar_url"
                alt="Photo de profil">
           <div>
             <p class="font-bold text-xl">{{ userData.value?.lastname }} {{ userData.value?.firstname }}</p>
