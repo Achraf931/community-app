@@ -1,5 +1,6 @@
 <script setup>
 const supabase = useSupabaseClient()
+const router = useRouter()
 definePageMeta({
     layout: 'sign',
     middleware: 'guest'
