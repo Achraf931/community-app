@@ -20,6 +20,9 @@ const handleLogin = async () => {
             loading.value = false
         } catch (error) {
             alert(error.error_description || error.message)
+        } finally {
+            console.log('ciao')
+            await router.push('/')
         }
     }
 }

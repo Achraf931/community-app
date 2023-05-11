@@ -3,14 +3,14 @@ definePageMeta({
     layout: 'account'
 })
 const supabase = useSupabaseClient()
-const user = useSupabaseUser()
+const user = (await supabase.auth.getSession()).data?.session?.user
 const userData = reactive({})
 watchEffect(async () => {
-    if (!user.value) return
+    if (!user) return
     const {data, error} = await supabase
         .from('profiles')
         .select('*')
-        .eq('user_id', user.value?.id)
+        .eq('user_id', user?.id)
         .single()
     userData.value = data
 })
@@ -18,7 +18,6 @@ const logout = async () => {
     try {
         let {error} = await supabase.auth.signOut()
         if (error) throw error
-        user.value = null
     } catch (error) {
         alert(error.message)
     } finally {
