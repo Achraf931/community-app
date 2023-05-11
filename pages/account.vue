@@ -6,8 +6,10 @@ definePageMeta({
 const supabase = useSupabaseClient()
 const user = (await supabase.auth.getSession()).data?.session?.user
 const userData = reactive({})
+console.log('1', user)
 watchEffect(async () => {
     if (!user) return
+    console.log('2', user)
     const {data, error} = await supabase
         .from('users')
         .select('*')
