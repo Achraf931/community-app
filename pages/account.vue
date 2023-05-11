@@ -10,6 +10,8 @@ const {data} = await supabase
     .select('*')
     .eq('id', user?.id)
     .single()
+console.log(user)
+console.log(data)
 const logout = async () => {
     try {
         let {error} = await supabase.auth.signOut()
