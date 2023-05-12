@@ -6,9 +6,11 @@ export default defineNuxtConfig({
         }
     },
     modules: [
-        '@nuxtjs/supabase',
         '@vueuse/nuxt',
-        '@kevinmarrec/nuxt-pwa'
+        '@kevinmarrec/nuxt-pwa',
+        '@pinia/nuxt',
+        '@nuxtjs/strapi',
+        '@pinia-plugin-persistedstate/nuxt'
     ],
     pwa: {
         icon: {

@@ -1,18 +1,45 @@
-<script setup>
+<!--<script setup>
 definePageMeta({
     layout: 'account',
     middleware: 'auth'
 })
+import { useAuthStore } from '@/stores/AuthStore'
+const store = useAuthStore()
 const supabase = useSupabaseClient()
-const user = (await supabase.auth.getSession()).data?.session?.user
+//  const user = (await supabase.auth.getSession()).data?.session?.user
 const logout = async () => {
     try {
         let {error} = await supabase.auth.signOut()
         if (error) throw error
+        store.$reset()
     } catch (error) {
         alert(error.message)
     } finally {
         navigateTo({name: 'login'})
+    }
+}
+</script>-->
+<script setup>
+import { useAuthStore } from '@/stores/AuthStore'
+
+definePageMeta({
+    layout: 'account',
+    middleware: 'auth'
+})
+
+const store = useAuthStore(),
+    router = useRouter(),
+    { logout } = useStrapiAuth(),
+    user = store.getUser
+
+const handleLogout = async () => {
+    try {
+        await logout()
+    } catch (error) {
+        console.log(error)
+    } finally {
+        await router.push('/login')
+        store.$reset()
     }
 }
 </script>
@@ -21,13 +48,13 @@ const logout = async () => {
     <header class="w-full rounded-xl flex items-center justify-between p-5 pb-0">
       <div class="flex items-center justify-between w-full gap-3">
         <div class="flex items-center justify-start gap-3">
-          <img class="w-10 h-10 p-0.5 mx-auto rounded-full object-cover border border-solid border-custom-purple"
-               :src="user.user_metadata?.avatar_url"
+          <img v-if="user.avatar_url" class="w-10 h-10 p-0.5 mx-auto rounded-full object-cover border border-solid border-custom-purple"
+               :src="user.avatar_url"
                alt="Photo de profil">
           <div>
-            <p class="font-bold text-xl">{{ user.user_metadata?.lastname }} {{ user.user_metadata?.firstname }}</p>
-            <p v-if="user.user_metadata?.job" class="text-xs text-light-gray">{{ user.user_metadata?.job }} <span
-              v-if="user.user_metadata?.company">chez {{ user.user_metadata?.company }}</span>
+            <p class="font-bold text-xl">{{ user.lastname }} {{ user.firstname }}</p>
+            <p v-if="user.job" class="text-xs text-light-gray">{{ user.job }} <span
+              v-if="user.company">chez {{ user.company }}</span>
             </p>
           </div>
         </div>
@@ -35,7 +62,7 @@ const logout = async () => {
     </header>
     <section class="flex flex-col justify-between items-start gap-5 flex-1 p-5">
       <div>
-        <p v-if="user.user_metadata?.description" class="mb-3 font-medium text-sm">{{ user.user_metadata?.description }}</p>
+        <p v-if="user.description" class="mb-3 font-medium text-sm">{{ user.description }}</p>
         <div class="flex items-center justify-between gap-2">
           <div class="rounded-full bg-custom-purple text-center px-4 py-2 text-xs text-white">56 followers</div>
           <div class="rounded-full bg-custom-purple text-center px-4 py-2 text-xs text-white">536 following</div>
@@ -136,7 +163,7 @@ const logout = async () => {
             <path d="M7.33 24l-2.83-2.829 9.339-9.175-9.339-9.167 2.83-2.829 12.17 11.996z"/>
           </svg>
         </div>
-        <div @click.prevent="logout"
+        <div @click.prevent="handleLogout"
              class="flex text-light-gray fill-light-gray items-center justify-between bg-white px-4 py-3.5 rounded-b-2xl">
           <div class="flex items-center justify-start gap-3">
             <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">

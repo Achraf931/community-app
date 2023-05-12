@@ -1,6 +1,9 @@
-<script setup>
+<!--<script setup>
+import { useAuthStore } from '@/stores/AuthStore'
+
 const supabase = useSupabaseClient()
 const router = useRouter()
+const store = useAuthStore()
 definePageMeta({
     layout: 'sign',
     middleware: 'guest'
@@ -14,13 +17,50 @@ const handleLogin = async () => {
     if (form.email !== '' && form.password !== '') {
         try {
             loading.value = true
-            const { error } = await supabase.auth.signInWithPassword({ email: form.email, password: form.password })
+            const { error, data } = await supabase.auth.signInWithPassword({ email: form.email, password: form.password })
             if (error) throw error
+            console.log(data)
+            await store.setSession(data.session)
             loading.value = false
             await router.push('/')
         } catch (error) {
             alert(error.error_description || error.message)
             loading.value = false
+        }
+    }
+}
+</script>-->
+<script setup>
+import { useAuthStore } from '@/stores/AuthStore'
+
+definePageMeta({
+    layout: 'sign',
+    middleware: 'guest'
+})
+const router = useRouter(),
+    store = useAuthStore(),
+    { login } = useStrapiAuth(),
+    pending = ref(false),
+    form = reactive({
+        email: '',
+        password: ''
+    })
+
+const handleLogin = async () => {
+    if (form.email !== '' && form.password !== '') {
+        pending.value = true
+        try {
+            const { jwt, user } = await login({
+                identifier: form.email,
+                password: form.password
+            })
+            if (user.value) {
+                await store.setUser({ jwt, user: user.value })
+                pending.value = false
+                await router.push('/')
+            }
+        } catch (error) {
+            console.log(error)
         }
     }
 }
@@ -38,7 +78,7 @@ const handleLogin = async () => {
                 <small class="block mt-2 text-custom-purple text-sm text-center">Mot de passe oublié ?</small>
             </label>
             <button type="submit" :disabled="form.email === '' || form.password === ''" :class="form.email !== '' && form.password !== '' ? 'bg-custom-purple text-white' : 'bg-transparent text-light-gray'" class="w-full flex items-center justify-center gap-2 font-medium mt-5 py-4 px-5 rounded-2xl border border-solid border-light-gray">
-                <svg v-if="loading" class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                <svg v-if="pending" class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
                 </svg>

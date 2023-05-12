@@ -9,7 +9,8 @@
   },
   "devDependencies": {
     "@kevinmarrec/nuxt-pwa": "^0.13.0",
-    "@nuxtjs/supabase": "^0.2.6",
+    "@nuxtjs/strapi": "^1.9.1",
+    "@pinia-plugin-persistedstate/nuxt": "^1.1.1",
     "autoprefixer": "^10.4.13",
     "nuxt": "3.0.0",
     "postcss": "^8.4.20",
@@ -17,6 +18,8 @@
   },
   "dependencies": {
     "@nuxtjs/dayjs": "^1.4.1",
-    "@vueuse/nuxt": "^10.0.0"
+    "@pinia/nuxt": "^0.4.10",
+    "@vueuse/nuxt": "^10.0.0",
+    "pinia": "^2.0.36"
   }
 }

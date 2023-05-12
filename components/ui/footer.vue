@@ -1,6 +1,7 @@
 <script setup>
-  const supabase = useSupabaseClient()
-  const user = (await supabase.auth.getSession()).data?.session?.user
+import { useAuthStore } from '@/stores/AuthStore'
+
+const store = useAuthStore()
 </script>
 <template>
   <nav class="rounded-t-3xl z-10 bg-white dark:bg-custom-gray dark:fill-white py-2.5 pb-7">
@@ -25,15 +26,15 @@
       </li>
       <li class="p-2">
         <NuxtLink :to="{ name: 'account' }">
-          <img class="w-7 h-7 p-0.5 rounded-full object-cover border border-solid border-custom-purple" :src="user?.user_metadata?.avatar_url" alt="Photo de profil">
+          <img class="w-7 h-7 p-0.5 rounded-full object-cover border border-solid border-custom-purple" :src="store.getUser.avatar_url" alt="Photo de profil">
         </NuxtLink>
       </li>
     </ul>
   </nav>
 </template>
 <style>
-.active > svg {
-    fill: #9087E6!important;
-    stroke: #9087E6!important;
-}
+  .active > svg {
+      fill: #9087E6!important;
+      stroke: #9087E6!important;
+  }
 </style>
