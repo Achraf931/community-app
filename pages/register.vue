@@ -50,6 +50,7 @@ const router = useRouter(),
     store = useAuthStore(),
     { register } = useStrapiAuth(),
     pending = ref(false),
+    formError = ref(null),
     form = reactive({
         username: '',
         lastname: '',
@@ -72,11 +73,12 @@ const handleRegister = async () => {
             })
             if (user.value) {
                 await store.setUser({ jwt, user: user.value })
-                pending.value = false
                 await router.push('/')
             }
-        } catch (error) {
-            console.log(error)
+        } catch ({ error }) {
+            formError.value = error.message
+        } finally {
+            pending.value = false
         }
     }
 }
@@ -108,7 +110,8 @@ const handleRegister = async () => {
         </svg>
         M'inscrire
       </button>
-      <p class="text-sm text-center text-light-gray">Déjà inscrit ? <NuxtLink :to="{ name: 'login' }" class="text-custom-purple font-medium">Me connecter</NuxtLink></p>
+        <p v-if="formError" class="text-sm text-center text-red-500 mt-2">{{ formError }}</p>
+        <p class="text-sm text-center text-light-gray">Déjà inscrit ? <NuxtLink :to="{ name: 'login' }" class="text-custom-purple font-medium">Me connecter</NuxtLink></p>
     </form>
   </section>
 </template>

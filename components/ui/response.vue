@@ -1,6 +1,6 @@
 <script setup>
 const more = ref(false),
-  open = ref(false),
+    open = ref(false),
     target = ref(null)
 
 onClickOutside(target, () => open.value = false)
@@ -19,18 +19,21 @@ onClickOutside(target, () => open.value = false)
   <article
     class="snap-start relative flex align-baseline justify-start gap-4 rounded-3xl bg-white shadow-sm p-4">
       <div class="flex flex-col justify-between items-center">
-        <NuxtLink class="contents" :to="{ name: 'profile-id', params: { id: props.data.user_id } }">
-          <img class="w-10 h-10 rounded-full object-cover shadow-md" :src="props.data.avatar" alt="Photo de profil">
-        </NuxtLink>
-        <div v-if="first" class="flex items-center justify-center flex-col">
-          <svg class="w-5 h-5 fill-custom-purple" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M12 0c-6.627 0-12 5.373-12 12s5.373 12 12 12 12-5.373 12-12-5.373-12-12-12zm4.326 18.266l-4.326-2.314-4.326 2.313.863-4.829-3.537-3.399 4.86-.671 2.14-4.415 2.14 4.415 4.86.671-3.537 3.4.863 4.829z"/></svg>
-          <p class="text-xs text-custom-purple font-semibold">Top</p>
+        <div>
+            <NuxtLink class="contents" :to="{ name: 'profile-id', params: { id: props.data.user_id } }">
+                <img class="w-10 h-10 rounded-full object-cover shadow-md" :src="props.data.avatar" alt="Photo de profil">
+            </NuxtLink>
+            <div v-if="first" class="flex items-center justify-center flex-col mt-1">
+                <svg class="w-5 h-5 fill-custom-purple" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path fill-rule="evenodd" d="M10.788 3.21c.448-1.077 1.976-1.077 2.424 0l2.082 5.007 5.404.433c1.164.093 1.636 1.545.749 2.305l-4.117 3.527 1.257 5.273c.271 1.136-.964 2.033-1.96 1.425L12 18.354 7.373 21.18c-.996.608-2.231-.29-1.96-1.425l1.257-5.273-4.117-3.527c-.887-.76-.415-2.212.749-2.305l5.404-.433 2.082-5.006z" clip-rule="evenodd" />
+                </svg>
+                <p class="text-xs text-custom-purple font-medium">Top</p>
         </div>
-        <small :class="first ? 'text-custom-purple fill-custom-purple stroke-custom-purple' : 'text-light-gray fill-light-gray stroke-light-gray'" class="flex items-center justify-center gap-1.5 font-medium">
-          <svg class="w-3 h-3"
-               xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-            <path d="M21.406 9.558c-1.21-.051-2.87-.278-3.977-.744.809-3.283 1.253-8.814-2.196-8.814-1.861 0-2.351 1.668-2.833 3.329-1.548 5.336-3.946 6.816-6.4 7.401v-.73h-6v12h6v-.904c2.378.228 4.119.864 6.169 1.746 1.257.541 3.053 1.158 5.336 1.158 2.538 0 4.295-.997 5.009-3.686.5-1.877 1.486-7.25 1.486-8.25 0-1.648-1.168-2.446-2.594-2.506zm-17.406 10.442h-2v-8h2v8zm15.896-5.583s.201.01 1.069-.027c1.082-.046 1.051 1.469.004 1.563l-1.761.099c-.734.094-.656 1.203.141 1.172 0 0 .686-.017 1.143-.041 1.068-.056 1.016 1.429.04 1.551-.424.053-1.745.115-1.745.115-.811.072-.706 1.235.109 1.141l.771-.031c.822-.074 1.003.825-.292 1.661-1.567.881-4.685.131-6.416-.614-2.239-.965-4.438-1.934-6.959-2.006v-6c3.264-.749 6.328-2.254 8.321-9.113.898-3.092 1.679-1.931 1.679.574 0 2.071-.49 3.786-.921 5.533 1.061.543 3.371 1.402 6.12 1.556 1.055.059 1.024 1.455-.051 1.584l-1.394.167s-.608 1.111.142 1.116z"/>
-          </svg>
+        </div>
+        <small :class="first ? 'text-custom-purple fill-custom-purple stroke-custom-purple' : 'text-light-gray fill-light-gray stroke-light-gray'" class="flex items-center text-xs justify-center gap-1.5 font-medium">
+            <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+            </svg>
           {{
             (new Intl.NumberFormat('fr-FR', {
               notation: 'compact',
@@ -44,7 +47,9 @@ onClickOutside(target, () => open.value = false)
         <div class="flex items-center justify-between">
           <NuxtLink :to="{ name: 'profile-id', params: { id: props.data.user_id } }" class="text-base font-medium">{{ props.data.author }}</NuxtLink>
           <div ref="target" class="relative inline-block text-left">
-            <svg @click="open = !open" :class="open ? 'fill-custom-purple' : 'fill-light-gray'" class="block w-6 transition-all duration-150 ease-in-out outline-0" clip-rule="evenodd" fill-rule="evenodd" stroke-linejoin="round" stroke-miterlimit="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="m16.5 11.995c0-1.242 1.008-2.25 2.25-2.25s2.25 1.008 2.25 2.25-1.008 2.25-2.25 2.25-2.25-1.008-2.25-2.25zm-6.75 0c0-1.242 1.008-2.25 2.25-2.25s2.25 1.008 2.25 2.25-1.008 2.25-2.25 2.25-2.25-1.008-2.25-2.25zm-6.75 0c0-1.242 1.008-2.25 2.25-2.25s2.25 1.008 2.25 2.25-1.008 2.25-2.25 2.25-2.25-1.008-2.25-2.25z"/></svg>
+              <svg @click="open = !open" :class="open ? 'fill-custom-purple' : 'fill-light-gray'" class="block w-6 transition-all duration-150 ease-in-out outline-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path fill-rule="evenodd" d="M4.5 12a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zm6 0a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zm6 0a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z" clip-rule="evenodd" />
+              </svg>
 
             <transition
               enter-active-class="ease-out"
@@ -72,7 +77,7 @@ onClickOutside(target, () => open.value = false)
         </div>
         <p class="text-xs text-light-gray mb-4">{{ props.data.job }}</p>
         <p :class="more ? 'line-clamp-none' : 'line-clamp-2'" class="content font-medium text-ellipsis">{{ props.data.content }}</p>
-        <p class="text-xs font-semibold block text-custom-purple mt-1" @click="more = !more">Lire {{ more ? 'moins' : 'tout' }}</p>
+        <p v-if="props.data.content.length > 90" class="text-xs font-semibold block text-custom-purple mt-1" @click="more = !more">Lire {{ more ? 'moins' : 'tout' }}</p>
       </div>
     </div>
   </article>

@@ -1,35 +1,3 @@
-<!--<script setup>
-import { useAuthStore } from '@/stores/AuthStore'
-
-const supabase = useSupabaseClient()
-const router = useRouter()
-const store = useAuthStore()
-definePageMeta({
-    layout: 'sign',
-    middleware: 'guest'
-})
-const loading = ref(false)
-const form = reactive({
-    email: '',
-    password: ''
-})
-const handleLogin = async () => {
-    if (form.email !== '' && form.password !== '') {
-        try {
-            loading.value = true
-            const { error, data } = await supabase.auth.signInWithPassword({ email: form.email, password: form.password })
-            if (error) throw error
-            console.log(data)
-            await store.setSession(data.session)
-            loading.value = false
-            await router.push('/')
-        } catch (error) {
-            alert(error.error_description || error.message)
-            loading.value = false
-        }
-    }
-}
-</script>-->
 <script setup>
 import { useAuthStore } from '@/stores/AuthStore'
 
@@ -41,6 +9,7 @@ const router = useRouter(),
     store = useAuthStore(),
     { login } = useStrapiAuth(),
     pending = ref(false),
+    formError = ref(null),
     form = reactive({
         email: '',
         password: ''
@@ -56,11 +25,12 @@ const handleLogin = async () => {
             })
             if (user.value) {
                 await store.setUser({ jwt, user: user.value })
-                pending.value = false
                 await router.push('/')
             }
-        } catch (error) {
-            console.log(error)
+        } catch ({ error }) {
+            formError.value = error.message
+        } finally {
+            pending.value = false
         }
     }
 }
@@ -75,8 +45,8 @@ const handleLogin = async () => {
             </label>
             <label for="password">
                 <input v-model="form.password" id="password" class="font-medium w-full py-4 px-5 caret-custom-purple rounded-2xl border border-solid border-custom-light-gray focus:border-custom-purple bg-custom-light-gray outline-none" type="password" inputmode="text" placeholder="Mot de passe">
-                <small class="block mt-2 text-custom-purple text-sm text-center">Mot de passe oublié ?</small>
             </label>
+            <small v-if="false" class="block text-custom-purple text-sm text-center">Mot de passe oublié ?</small>
             <button type="submit" :disabled="form.email === '' || form.password === ''" :class="form.email !== '' && form.password !== '' ? 'bg-custom-purple text-white' : 'bg-transparent text-light-gray'" class="w-full flex items-center justify-center gap-2 font-medium mt-5 py-4 px-5 rounded-2xl border border-solid border-light-gray">
                 <svg v-if="pending" class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
@@ -84,6 +54,7 @@ const handleLogin = async () => {
                 </svg>
                 Me connecter
             </button>
+            <p v-if="formError" class="text-sm text-center text-red-500 mt-2">{{ formError }}</p>
         </form>
 
         <div class="bg-white p-5 flex flex-col items-center justify-start w-full rounded-3xl shadow-sm">

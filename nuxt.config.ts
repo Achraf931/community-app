@@ -9,7 +9,9 @@ export default defineNuxtConfig({
         '@vueuse/nuxt',
         '@kevinmarrec/nuxt-pwa',
         '@pinia/nuxt',
-        '@nuxtjs/strapi',
+        ['@nuxtjs/strapi', {
+            devtools: true
+        }],
         '@pinia-plugin-persistedstate/nuxt'
     ],
     pwa: {

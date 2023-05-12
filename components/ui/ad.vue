@@ -1,7 +1,7 @@
 <template>
   <article class="rounded-3xl bg-white shadow-sm p-4">
     <div class="flex items-center justify-start gap-4">
-      <div class="w-10 h-10 min-w-[2.5rem] rounded-md p-2 object-cover shadow-md">
+      <div class="w-10 h-10 min-w-[2.5rem] bg-custom-purple rounded-md p-2 object-cover shadow-md">
         <img class="w-full h-full" src="/images/revolut.png" alt="Logo Revolut">
       </div>
       <div class="flex gap-2 items-center w-full">
