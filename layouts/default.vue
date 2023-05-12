@@ -1,7 +1,7 @@
 <template>
     <main class="font-poppins text-default h-screen bg-custom-light-gray dark:bg-default flex flex-col align-top mx-auto">
         <header class="w-full rounded-xl flex items-center justify-between p-5 pb-0">
-            <NuxtLink to="/" class="text-xl font-extrabold dark:text-white">Community<span class="text-custom-purple">.</span></NuxtLink>
+            <NuxtLink to="/" class="text-sm font-extrabold dark:text-white">Community<span class="text-custom-purple">.</span></NuxtLink>
             <div class="flex gap-4 dark:fill-white">
                 <div class="flex items-center justify-center p-2.5 w-10 h-10 bg-white shadow-sm rounded-full">
                     <svg class="w-5 h-5 fill-light-gray" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
