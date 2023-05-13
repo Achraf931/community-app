@@ -1,22 +1,16 @@
 <script setup>
 definePageMeta({
-    layout: 'questions',
+    layout: 'thread',
     middleware: 'auth'
 })
 const { $dayjs } = useNuxtApp(),
+    { findOne } = useStrapi(),
     pending = ref(true),
     route = useRoute(),
     openedImg = ref(null),
     more = ref(true),
-    { data } = useFetch(`https://64566c612e41ccf1691ca819.mockapi.io/api/questions/${route.params.id}`, {
-        onResponse({ response }) {
-            pending.value = false
-            return response
-        }
-    })
-const showMore = computed(() => {
-    return more
-})
+    { data } = await findOne('threads', `${route.params.id}`, { populate: { author: true, answers: { populate: { author: true } } } })
+pending.value = false
 </script>
 <template>
     <ui-loader v-if="pending" class="flex-1 p-5 w-full flex items-center justify-center"/>
@@ -25,17 +19,17 @@ const showMore = computed(() => {
             <div @click="openedImg = null" class="bg-default/50 absolute top-0 left-0 h-screen w-screen z-10 p-5"/>
             <img class="z-20 absolute left-1/2 top-1/2 w-[calc(100vw-2.250rem)] -translate-x-1/2 -translate-y-1/2 rounded-3xl" :src="openedImg" alt="Image opened">
         </template>
-        <article class="flex align-baseline justify-start gap-4 rounded-3xl pt-4">
-                <NuxtLink class="contents" :to="{ name: 'profile-id', params: { id: data.user_id } }">
-                    <img v-if="data.avatar" class="w-10 h-10 rounded-full object-cover shadow-md" :src="data.avatar" alt="Photo de profil">
+        <article class="flex align-baseline justify-start gap-4 rounded-3xl">
+                <NuxtLink class="contents" :to="{ name: 'profile-id', params: { id: data.attributes.author.data.id } }">
+                    <img class="w-10 h-10 rounded-full object-cover shadow-md" :src="data.attributes.author.data.attributes.avatar_url" alt="Photo de profil">
                 </NuxtLink>
                 <div class="flex gap-2 items-center w-full">
                     <div class="w-full">
                         <div class="flex items-center justify-between">
-                            <NuxtLink :to="{ name: 'profile-id', params: { id: data.user_id } }" class="text-base font-medium">{{ data.author }}</NuxtLink>
-                            <small class="text-light-gray">{{ $dayjs(data.createdAt).locale('fr').fromNow() }}</small>
+                            <NuxtLink :to="{ name: 'profile-id', params: { id: data.attributes.author.data.id } }" class="text-base font-medium">{{ data.attributes.author.data.attributes.firstname }} {{ data.attributes.author.data.attributes.lastname }}</NuxtLink>
+                            <small class="text-light-gray">{{ $dayjs(data.attributes.createdAt).fromNow() }}</small>
                         </div>
-                        <p class="text-xs text-light-gray mt-1">{{ data.job }}</p>
+                        <p class="text-xs text-light-gray mt-1">{{ data.attributes.author.data.attributes.job }}</p>
                     </div>
                 </div>
             </article>
@@ -46,8 +40,8 @@ const showMore = computed(() => {
                     </svg>
                     Question
                 </small>
-                <p :class="more ? 'line-clamp-none' : 'line-clamp-2'" class="font-medium text-ellipsis">{{ data.content }}</p>
-                <div v-if="more" class="grid grid-cols-7 gap-1 mt-3">
+                <p :class="more ? 'line-clamp-none' : 'line-clamp-2'" class="font-medium text-ellipsis">{{ data.attributes.description }}</p>
+                <div v-if="more && false" class="grid grid-cols-7 gap-1 mt-3">
                     <img @click="openedImg = data.document" class="w-10 h-10 rounded-md object-cover" :src="data.document" alt="Document">
                     <img @click="openedImg = data.document" class="w-10 h-10 rounded-md object-cover" :src="data.document" alt="Document">
                     <img @click="openedImg = data.document" class="w-10 h-10 rounded-md object-cover" :src="data.document" alt="Document">
@@ -56,7 +50,7 @@ const showMore = computed(() => {
                     <img @click="openedImg = data.document" class="w-10 h-10 rounded-md object-cover" :src="data.document" alt="Document">
                     <img @click="openedImg = data.document" class="w-10 h-10 rounded-md object-cover" :src="data.document" alt="Document">
                 </div>
-                <small v-if="data.content.length > 90" class="font-semibold block text-custom-purple mt-1" @click="more = !more">Lire {{ more ? 'moins' : 'tout' }}</small>
+                <small v-if="data.attributes.description.length > 80" class="font-semibold block text-custom-purple mt-1" @click="more = !more">Lire {{ more ? 'moins' : 'tout' }}</small>
             </div>
 
             <div class="flex flex-col flex-1 h-0">
@@ -67,9 +61,29 @@ const showMore = computed(() => {
                     </svg>
                 </div>
                 <div class="flex flex-col gap-5 flex-1 overflow-auto snap-y">
-                    <ui-response :data="data" :first="true" />
-                    <ui-response :data="data" v-for="index in 6" :key="index" class="last:mb-5" />
+                    <p v-if="!data.attributes.answers.data.length" class="text-center font-medium text-sm">Aucune réponse pour le moment</p>
+                    <ui-response v-else :data="answer" v-for="answer in data.attributes.answers.data" :key="answer.id" class="last:mb-16" />
                 </div>
             </div>
+        <div class="absolute bottom-0 pointer-events-none left-0 text-xs text-light-gray bg-gradient-to-t from-custom-light-gray w-full flex items-center justify-center p-5">
+            <div class="bg-white shadow-sm p-2 flex items-center justify-between gap-5 rounded-full">
+                <div class="flex items-center justify-start gap-1">
+                    <div class="flex items-center justify-center p-1 bg-custom-light-gray shadow-sm rounded-full">
+                        <svg class="fill-light-gray stroke-light-gray w-3 h-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+                        </svg>
+                    </div>
+                    <p>126</p>
+                </div>
+                <div class="flex items-center justify-start gap-1">
+                    <div class="flex items-center justify-center p-1 bg-custom-light-gray shadow-sm rounded-full">
+                        <svg class="fill-light-gray stroke-light-gray w-3 h-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path fill-rule="evenodd" d="M5.337 21.718a6.707 6.707 0 01-.533-.074.75.75 0 01-.44-1.223 3.73 3.73 0 00.814-1.686c.023-.115-.022-.317-.254-.543C3.274 16.587 2.25 14.41 2.25 12c0-5.03 4.428-9 9.75-9s9.75 3.97 9.75 9c0 5.03-4.428 9-9.75 9-.833 0-1.643-.097-2.417-.279a6.721 6.721 0 01-4.246.997z" clip-rule="evenodd" />
+                        </svg>
+                    </div>
+                    <p>{{ data.attributes.answers.data.length }}</p>
+                </div>
+            </div>
+        </div>
     </section>
 </template>
