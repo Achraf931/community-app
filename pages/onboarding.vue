@@ -7,7 +7,7 @@
   useHead({
       meta: [{
           name: 'theme-color',
-          media: '(prefers-color-scheme: dark)',
+          media: '(prefers-color-scheme: black)',
           content: '#FFCA60'
       }]
   })

@@ -5,13 +5,6 @@ definePageMeta({
     layout: 'sign',
     middleware: 'guest'
 })
-useHead({
-    meta: [{
-        name: 'theme-color',
-        media: '(prefers-color-scheme: dark)',
-        content: '#FFCA60'
-    }]
-})
 const router = useRouter(),
     store = useAuthStore(),
     { login } = useStrapiAuth(),
@@ -67,7 +60,7 @@ const handleLogin = async () => {
         <div class="bg-white p-5 flex flex-col items-center justify-start w-full rounded-3xl shadow-sm">
             <h1 class="font-semibold text-center">Pas encore de compte ?</h1>
             <p class="text-center mt-2 text-sm">Rejoins le plus grand réseau d'étudiants,<br />penser et gérer par des étudiants</p>
-            <NuxtLink :to="{ name: 'register' }" class="w-full bg-custom-purple text-white text-center font-semibold mt-5 py-4 px-5 rounded-2xl border border-solid border-light-gray">M'inscrire</NuxtLink>
+            <NuxtLink :to="{ name: 'register' }" class="w-full bg-custom-purple text-white text-center font-bold mt-5 py-4 px-5 rounded-2xl border border-solid border-light-gray">M'inscrire</NuxtLink>
         </div>
     </section>
 </template>

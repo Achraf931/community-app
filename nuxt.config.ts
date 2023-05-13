@@ -1,5 +1,4 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
-// @ts-ignore
 export default defineNuxtConfig({
     app: {
         head: {
@@ -18,12 +17,8 @@ export default defineNuxtConfig({
             source: '/images/icon.png'
         },
         meta: {
-            // Generate splash screens for iOS
-            mobileAppIOS: true,
+            theme_color: '#F2F2F2',
             appleStatusBarStyle: 'black-translucent'
-        },
-        workbox: {
-            enabled: true
         },
         manifest: {
             name: 'Community',
@@ -35,7 +30,8 @@ export default defineNuxtConfig({
                 type: 'image/png',
                 sizes: '512x512'
             }],
-            theme_color: '#F2F2F2'
+            theme_color: '#F2F2F2',
+            background_color: '#F2F2F2'
         }
     },
     css: ['~/assets/css/main.css'],

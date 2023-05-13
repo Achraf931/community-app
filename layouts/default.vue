@@ -1,5 +1,5 @@
 <template>
-    <main class="font-poppins text-default h-screen bg-custom-light-gray dark:bg-default flex flex-col justify-between align-top mx-auto">
+    <main class="font-poppins text-default h-screen bg-custom-light-gray flex flex-col justify-between align-top mx-auto">
         <header class="w-full rounded-xl flex items-center justify-between p-5 pb-0">
             <NuxtLink to="/" class="text-2xl font-black dark:text-white">C<span class="text-custom-purple">o</span>mmunity<span class="text-[#FFB5FF]">.</span></NuxtLink>
             <div class="flex gap-4">
