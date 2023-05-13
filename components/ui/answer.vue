@@ -5,7 +5,7 @@ const more = ref(false),
 
 onClickOutside(target, () => open.value = false)
   const props = defineProps({
-    data: {
+    answer: {
       type: Object,
       required: true
     },
@@ -19,8 +19,8 @@ onClickOutside(target, () => open.value = false)
   <article class="snap-start relative flex align-baseline justify-start gap-4 rounded-3xl bg-white shadow-sm p-4">
       <div class="flex flex-col justify-between items-center">
         <div>
-            <NuxtLink class="contents" :to="{ name: 'profile-id', params: { id: props.data.attributes.author.data.id } }">
-                <img class="w-10 h-10 rounded-full object-cover shadow-md" :src="props.data.attributes.author.data.attributes.avatar_url" alt="Photo de profil">
+            <NuxtLink class="contents" :to="{ name: 'profile-id', params: { id: props.answer.attributes.author.data.id } }">
+                <img class="w-10 h-10 rounded-full object-cover shadow-md" :src="props.answer.attributes.author.data.attributes.avatar_url" alt="Photo de profil">
             </NuxtLink>
             <div v-if="first" class="flex items-center justify-center flex-col mt-1">
                 <svg class="w-5 h-5 fill-custom-purple" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
@@ -44,7 +44,7 @@ onClickOutside(target, () => open.value = false)
     <div class="flex gap-2 items-center w-full">
       <div class="w-full">
         <div class="flex items-center justify-between">
-          <NuxtLink :to="{ name: 'profile-id', params: { id: props.data.attributes.author.data.id } }" class="text-base font-medium">{{ props.data.attributes.author.data.attributes.firstname }} {{ props.data.attributes.author.data.attributes.lastname }}</NuxtLink>
+          <NuxtLink :to="{ name: 'profile-id', params: { id: props.answer.attributes.author.data.id } }" class="text-base font-medium">{{ props.answer.attributes.author.data.attributes.firstname }} {{ props.answer.attributes.author.data.attributes.lastname }}</NuxtLink>
           <div ref="target" class="relative inline-block text-left">
               <svg @click="open = !open" :class="open ? 'fill-custom-purple' : 'fill-light-gray'" class="block w-6 transition-all duration-150 ease-in-out outline-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                   <path fill-rule="evenodd" d="M4.5 12a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zm6 0a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zm6 0a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z" clip-rule="evenodd" />
@@ -74,9 +74,9 @@ onClickOutside(target, () => open.value = false)
             </transition>
           </div>
         </div>
-        <p class="text-xs text-light-gray mb-4">{{ props.data.attributes.author.data.attributes.job }}</p>
-        <p :class="more ? 'line-clamp-none' : 'line-clamp-2'" class="content font-medium text-ellipsis">{{ props.data.attributes.content }}</p>
-        <p v-if="props.data.attributes.content.length > 80" class="text-xs font-semibold block text-custom-purple mt-1" @click="more = !more">Lire {{ more ? 'moins' : 'tout' }}</p>
+        <p class="text-xs text-light-gray mb-4">{{ props.answer.attributes.author.data.attributes.job }}</p>
+        <p :class="more ? 'line-clamp-none' : 'line-clamp-2'" class="content font-medium text-ellipsis">{{ props.answer.attributes.content }}</p>
+        <p v-if="props.answer.attributes.content.length > 80" class="text-xs font-semibold block text-custom-purple mt-1" @click="more = !more">Lire {{ more ? 'moins' : 'tout' }}</p>
       </div>
     </div>
   </article>

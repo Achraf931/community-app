@@ -78,7 +78,7 @@ pending.value = false
                 </div>
                 <div class="flex flex-col gap-3 flex-1 overflow-auto snap-y">
                     <p v-if="!data.attributes.answers.data.length" class="text-center font-medium text-sm">Aucune réponse pour le moment</p>
-                    <ui-response v-else :data="answer" v-for="answer in data.attributes.answers.data" :key="answer.id" class="last:mb-5" />
+                    <ui-answer v-else :answer="answer" v-for="answer in data.attributes.answers.data" :key="answer.id" class="last:mb-5" />
                 </div>
             </div>
     </section>
