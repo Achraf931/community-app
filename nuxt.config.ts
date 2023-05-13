@@ -17,7 +17,7 @@ export default defineNuxtConfig({
             source: '/images/icon.png'
         },
         meta: {
-            theme_color: '#F2F2F2',
+            mobileAppIOS: true,
             appleStatusBarStyle: 'black-translucent'
         },
         manifest: {
@@ -30,8 +30,7 @@ export default defineNuxtConfig({
                 type: 'image/png',
                 sizes: '512x512'
             }],
-            theme_color: '#F2F2F2',
-            background_color: '#F2F2F2'
+            theme_color: '#F2F2F2'
         }
     },
     css: ['~/assets/css/main.css'],
