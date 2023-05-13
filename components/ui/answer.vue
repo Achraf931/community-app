@@ -74,7 +74,7 @@ onClickOutside(target, () => open.value = false)
             </transition>
           </div>
         </div>
-        <p class="text-xs text-light-gray mb-4">{{ props.answer.attributes.author.data.attributes.job }}</p>
+        <p class="text-xs text-light-gray font-medium mb-4">{{ props.answer.attributes.author.data.attributes.job }}</p>
         <p :class="more ? 'line-clamp-none' : 'line-clamp-2'" class="content font-medium text-ellipsis">{{ props.answer.attributes.content }}</p>
         <p v-if="props.answer.attributes.content.length > 80" class="text-xs font-semibold block text-custom-purple mt-1" @click="more = !more">Lire {{ more ? 'moins' : 'tout' }}</p>
       </div>

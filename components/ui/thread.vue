@@ -31,7 +31,7 @@ const props = defineProps({
                     <p class="text-base font-medium">{{ props.thread.attributes.author.data.attributes.firstname }}</p>
                     <small class="text-xs text-light-gray font-medium">{{ props.thread.attributes.author.data.attributes.school }}</small>
                 </div>
-                <p class="text-xs text-light-gray mb-4">{{ props.thread.attributes.author.data.attributes.job }}</p>
+                <p class="text-xs text-light-gray font-medium mb-4">{{ props.thread.attributes.author.data.attributes.job }}</p>
                 <p class="font-medium">{{ props.thread.attributes.description }}</p>
             </div>
         </div>
