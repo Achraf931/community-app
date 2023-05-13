@@ -1,4 +1,5 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+// @ts-ignore
 export default defineNuxtConfig({
     app: {
         head: {
@@ -19,6 +20,7 @@ export default defineNuxtConfig({
         meta: {
             // Generate splash screens for iOS
             mobileAppIOS: true,
+            appleStatusBarStyle: 'black-translucent'
         },
         workbox: {
             enabled: true

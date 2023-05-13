@@ -28,11 +28,11 @@ const props = defineProps({
         <div class="flex gap-2 items-center w-full">
             <div class="w-full">
                 <div class="flex items-center justify-between">
-                    <p class="text-base font-medium">{{ props.thread.attributes.author.data.attributes.firstname }}</p>
+                    <p class="text-sm font-bold">{{ props.thread.attributes.author.data.attributes.firstname }} {{ props.thread.attributes.author.data.attributes.lastname }}</p>
                     <small class="text-xs text-light-gray font-medium">{{ props.thread.attributes.author.data.attributes.school }}</small>
                 </div>
                 <p class="text-xs text-light-gray font-medium mb-4">{{ props.thread.attributes.author.data.attributes.job }}</p>
-                <p class="font-medium">{{ props.thread.attributes.description }}</p>
+                <p class="text-sm font-medium">{{ props.thread.attributes.description }}</p>
             </div>
         </div>
     </NuxtLink>
