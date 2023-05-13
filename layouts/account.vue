@@ -5,7 +5,7 @@ const store = useAuthStore()
 </script>
 <template>
     <main class="font-poppins text-default h-screen bg-custom-light-gray dark:bg-default flex flex-col align-top justify-between mx-auto">
-        <header class="w-full rounded-xl flex items-center justify-between p-5 pt-0">
+        <header class="w-full rounded-xl flex items-center justify-between p-5">
             <img class="w-10 h-10 p-0.5 rounded-full object-cover border border-solid border-custom-purple"
                  :src="store.getUser.avatar_url"
                  alt="Photo de profil">

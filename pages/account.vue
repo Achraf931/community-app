@@ -23,7 +23,7 @@ const handleLogout = async () => {
 }
 </script>
 <template>
-    <section class="flex flex-col justify-between items-start gap-3 flex-1 px-5 pt-5 h-0">
+    <section class="flex flex-col justify-between items-start gap-3 flex-1 px-5 h-0">
         <p v-if="user.description" class="items-center w-full bg-white rounded-2xl py-2.5 px-5 font-medium text-sm shadow-sm">{{ user.description }}</p>
 
       <div class="grid grid-cols-3 divide-x divide-custom-purple items-center w-full bg-white rounded-2xl py-2.5 shadow-sm">
