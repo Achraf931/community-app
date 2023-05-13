@@ -51,7 +51,7 @@ const matchingText = (elem) => {
         <div v-if="searchMode" class="absolute top-full z-20 left-0 pt-0 p-5 max-h-[390px] w-full">
             <p v-if="query !== '' && !isTyping && searchResults.length === 0" class="rounded-full bg-white text-center p-4 font-medium text-sm">Aucun résultat</p>
             <div v-else class="rounded-3xl max-h-[390px] overflow-auto snap-y">
-                <NuxtLink :to="{ name: 'questions-id', params: { id: result.id } }" v-for="result in searchResults" :key="result.id" class="snap-start flex gap-3 items-center justify-between bg-white first:rounded-t-3xl last:rounded-b-3xl p-5 text-sm border-b border-solid border-custom-purple">
+                <NuxtLink :to="{ name: 'threads-id', params: { id: result.id } }" v-for="result in searchResults" :key="result.id" class="snap-start flex gap-3 items-center justify-between bg-white first:rounded-t-3xl last:rounded-b-3xl p-5 text-sm border-b border-solid border-custom-purple">
                     <p class="font-medium" v-html="matchingText(result.attributes.description)" />
                     <div class="text-center fill-custom-purple text-custom-purple">
                         <svg class="w-3 h-3 mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">

@@ -17,5 +17,6 @@
             </div>
         </header>
         <slot />
+        <ui-footer />
     </main>
 </template>

@@ -1,6 +1,6 @@
 <script setup>
 definePageMeta({
-    layout: 'questions',
+    layout: 'threads',
     middleware: 'auth'
 })
 </script>

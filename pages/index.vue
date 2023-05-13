@@ -63,7 +63,7 @@ try {
         <section id="content" class="flex flex-col flex-1 overflow-hidden gap-3 p-5 pb-0">
             <div class="flex items-center justify-between mb-2">
                 <h2 class="font-semibold text-xl">Suggestions pour vous</h2>
-                <NuxtLink :to="{ name: 'questions' }" class="text-xs text-custom-purple font-semibold">Tout voir</NuxtLink>
+                <NuxtLink :to="{ name: 'threads' }" class="text-xs text-custom-purple font-semibold">Tout voir</NuxtLink>
             </div>
 
             <div class="overflow-scroll flex-1 snap-y flex flex-col gap-3">

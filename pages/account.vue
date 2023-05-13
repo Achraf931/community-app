@@ -45,7 +45,7 @@ const handleLogout = async () => {
         <div class="flex items-center justify-between gap-2">
           <div class="rounded-full bg-custom-purple text-center px-3 py-2 text-xs text-white">56 followers</div>
           <div class="rounded-full bg-custom-purple text-center px-3 py-2 text-xs text-white">536 following</div>
-          <div class="rounded-full bg-custom-purple text-center px-3 py-2 text-xs text-white">21 questions</div>
+          <div class="rounded-full bg-custom-purple text-center px-3 py-2 text-xs text-white">21 threads</div>
         </div>
       </div>
 

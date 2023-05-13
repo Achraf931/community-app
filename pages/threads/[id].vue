@@ -29,7 +29,23 @@ pending.value = false
                             <NuxtLink :to="{ name: 'profile-id', params: { id: data.attributes.author.data.id } }" class="text-base font-medium">{{ data.attributes.author.data.attributes.firstname }} {{ data.attributes.author.data.attributes.lastname }}</NuxtLink>
                             <small class="text-light-gray">{{ $dayjs(data.attributes.createdAt).fromNow() }}</small>
                         </div>
-                        <p class="text-xs text-light-gray mt-1">{{ data.attributes.author.data.attributes.job }}</p>
+                        <div class="flex items-center justify-between">
+                            <p class="text-xs text-light-gray mt-1">{{ data.attributes.author.data.attributes.job }}</p>
+                            <div class="text-xs text-light-gray flex items-center justify-end gap-3">
+                                <p class="flex items-center justify-start gap-1">
+                                    <svg class="flex items-center justify-center w-3 h-3 fill-light-gray" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+                                    </svg>
+                                    126
+                                </p>
+                                <p class="flex items-center justify-start gap-1">
+                                    <svg class="flex items-center justify-center w-3 h-3 fill-light-gray" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                                        <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
+                                    </svg>
+                                    {{ data.attributes.answers.data.length }}
+                                </p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </article>
@@ -60,30 +76,10 @@ pending.value = false
                         <path d="M18.75 12.75h1.5a.75.75 0 000-1.5h-1.5a.75.75 0 000 1.5zM12 6a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5A.75.75 0 0112 6zM12 18a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5A.75.75 0 0112 18zM3.75 6.75h1.5a.75.75 0 100-1.5h-1.5a.75.75 0 000 1.5zM5.25 18.75h-1.5a.75.75 0 010-1.5h1.5a.75.75 0 010 1.5zM3 12a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5A.75.75 0 013 12zM9 3.75a2.25 2.25 0 100 4.5 2.25 2.25 0 000-4.5zM12.75 12a2.25 2.25 0 114.5 0 2.25 2.25 0 01-4.5 0zM9 15.75a2.25 2.25 0 100 4.5 2.25 2.25 0 000-4.5z" />
                     </svg>
                 </div>
-                <div class="flex flex-col gap-5 flex-1 overflow-auto snap-y">
+                <div class="flex flex-col gap-3 flex-1 overflow-auto snap-y">
                     <p v-if="!data.attributes.answers.data.length" class="text-center font-medium text-sm">Aucune réponse pour le moment</p>
-                    <ui-response v-else :data="answer" v-for="answer in data.attributes.answers.data" :key="answer.id" class="last:mb-16" />
+                    <ui-response v-else :data="answer" v-for="answer in data.attributes.answers.data" :key="answer.id" class="last:mb-5" />
                 </div>
             </div>
-        <div class="absolute bottom-0 pointer-events-none left-0 text-xs text-light-gray bg-gradient-to-t from-custom-light-gray w-full flex items-center justify-center p-5">
-            <div class="bg-white shadow-sm p-2 flex items-center justify-between gap-5 rounded-full">
-                <div class="flex items-center justify-start gap-1">
-                    <div class="flex items-center justify-center p-1 bg-custom-light-gray shadow-sm rounded-full">
-                        <svg class="fill-light-gray stroke-light-gray w-3 h-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />
-                        </svg>
-                    </div>
-                    <p>126</p>
-                </div>
-                <div class="flex items-center justify-start gap-1">
-                    <div class="flex items-center justify-center p-1 bg-custom-light-gray shadow-sm rounded-full">
-                        <svg class="fill-light-gray stroke-light-gray w-3 h-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-                            <path fill-rule="evenodd" d="M5.337 21.718a6.707 6.707 0 01-.533-.074.75.75 0 01-.44-1.223 3.73 3.73 0 00.814-1.686c.023-.115-.022-.317-.254-.543C3.274 16.587 2.25 14.41 2.25 12c0-5.03 4.428-9 9.75-9s9.75 3.97 9.75 9c0 5.03-4.428 9-9.75 9-.833 0-1.643-.097-2.417-.279a6.721 6.721 0 01-4.246.997z" clip-rule="evenodd" />
-                        </svg>
-                    </div>
-                    <p>{{ data.attributes.answers.data.length }}</p>
-                </div>
-            </div>
-        </div>
     </section>
 </template>
