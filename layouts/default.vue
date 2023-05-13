@@ -1,8 +1,9 @@
 <template>
-    <main class="font-poppins text-default h-screen bg-custom-light-gray dark:bg-default flex flex-col align-top mx-auto">
+    <main class="font-poppins text-default h-screen bg-custom-light-gray dark:bg-default flex flex-col justify-between align-top mx-auto">
         <header class="w-full rounded-xl flex items-center justify-between p-5 pb-0">
-            <NuxtLink to="/" class="text-sm font-extrabold dark:text-white">Community<span class="text-custom-purple">.</span></NuxtLink>
-            <div class="flex gap-4 dark:fill-white">
+            <NuxtLink to="/" class="text-2xl font-black dark:text-white">C<span class="text-custom-purple">o</span>mmunity<span class="text-[#FFB5FF]">.</span></NuxtLink>
+            <div class="flex gap-4">
+                <ui-search />
                 <div class="flex items-center justify-center p-2.5 w-10 h-10 bg-white shadow-sm rounded-full">
                     <svg class="w-5 h-5 fill-light-gray" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M5.85 3.5a.75.75 0 00-1.117-1 9.719 9.719 0 00-2.348 4.876.75.75 0 001.479.248A8.219 8.219 0 015.85 3.5zM19.267 2.5a.75.75 0 10-1.118 1 8.22 8.22 0 011.987 4.124.75.75 0 001.48-.248A9.72 9.72 0 0019.266 2.5z" />
@@ -16,3 +17,5 @@
     </main>
 </template>
 
+<script setup lang="ts">
+</script>

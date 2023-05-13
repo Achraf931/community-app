@@ -1,7 +1,9 @@
 <script setup>
 const more = ref(false),
     open = ref(false),
-    target = ref(null)
+    target = ref(null),
+    answer = ref(null),
+    isFullscreen = ref(false)
 
 onClickOutside(target, () => open.value = false)
   const props = defineProps({
@@ -14,10 +16,14 @@ onClickOutside(target, () => open.value = false)
       default: false
     }
   })
+
+const handleFullscreen = () => {
+    isFullscreen.value = !isFullscreen.value
+  }
 </script>
 <template>
-  <article class="snap-start relative flex align-baseline justify-start gap-4 rounded-3xl bg-white shadow-sm p-4">
-      <div class="flex flex-col justify-between items-center">
+  <article ref="answer" :class="isFullscreen ? 'absolute top-0 left-0 w-screen h-screen z-30 items-start p-5 rounded-none bg-custom-light-gray' : 'rounded-3xl relative bg-white'" class="snap-start flex justify-start gap-4 shadow-sm p-4">
+      <div class="flex flex-col gap-2 justify-between items-center">
         <div>
             <NuxtLink class="contents" :to="{ name: 'profile-id', params: { id: props.answer.attributes.author.data.id } }">
                 <img class="w-10 h-10 rounded-full object-cover shadow-md" :src="props.answer.attributes.author.data.attributes.avatar_url" alt="Photo de profil">
@@ -41,10 +47,10 @@ onClickOutside(target, () => open.value = false)
           }}
       </small>
       </div>
-    <div class="flex gap-2 items-center w-full">
-      <div class="w-full">
+    <div :class="isFullscreen ? 'items-start h-full' : 'items-center'" class="flex gap-2 w-full">
+      <div :class="{ 'h-full flex flex-col': isFullscreen }" class="w-full">
         <div class="flex items-center justify-between">
-          <NuxtLink :to="{ name: 'profile-id', params: { id: props.answer.attributes.author.data.id } }" class="text-base font-medium">{{ props.answer.attributes.author.data.attributes.firstname }} {{ props.answer.attributes.author.data.attributes.lastname }}</NuxtLink>
+          <NuxtLink :to="{ name: 'profile-id', params: { id: props.answer.attributes.author.data.id } }" class="text-sm font-bold">{{ props.answer.attributes.author.data.attributes.firstname }} {{ props.answer.attributes.author.data.attributes.lastname }}</NuxtLink>
           <div ref="target" class="relative inline-block text-left">
               <svg @click="open = !open" :class="open ? 'fill-custom-purple' : 'fill-light-gray'" class="block w-6 transition-all duration-150 ease-in-out outline-0" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                   <path fill-rule="evenodd" d="M4.5 12a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zm6 0a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0zm6 0a1.5 1.5 0 113 0 1.5 1.5 0 01-3 0z" clip-rule="evenodd" />
@@ -75,8 +81,19 @@ onClickOutside(target, () => open.value = false)
           </div>
         </div>
         <p class="text-xs text-light-gray font-medium mb-4">{{ props.answer.attributes.author.data.attributes.job }}</p>
-        <p :class="more ? 'line-clamp-none' : 'line-clamp-2'" class="content font-medium text-ellipsis">{{ props.answer.attributes.content }}</p>
-        <p v-if="props.answer.attributes.content.length > 80" class="text-xs font-semibold block text-custom-purple mt-1" @click="more = !more">Lire {{ more ? 'moins' : 'tout' }}</p>
+        <p v-if="props.answer.attributes.content.length > 200" :class="isFullscreen ? 'line-clamp-none overflow-auto mb-5 bg-white p-5 rounded-2xl' : 'line-clamp-2 text-ellipsis'" class="content text-sm font-medium">{{ props.answer.attributes.content }}</p>
+        <p v-else-if="props.answer.attributes.content.length > 80 && props.answer.attributes.content.length < 200" :class="more ? 'line-clamp-none' : 'line-clamp-2 text-ellipsis'" class="content text-sm font-medium">{{ props.answer.attributes.content }}</p>
+        <p v-if="props.answer.attributes.content.length > 80 && props.answer.attributes.content.length < 200" class="text-xs font-semibold block text-custom-purple mt-1" @click="more = !more">Lire {{ more ? 'moins' : 'tout' }}</p>
+          <template v-else-if="props.answer.attributes.content.length > 200">
+              <svg v-if="!isFullscreen" @click="handleFullscreen" class="w-4 h-4 ml-auto mt-2 fill-light-gray stroke-light-gray" stroke-width=".2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                  <path fill-rule="evenodd" d="M15 3.75a.75.75 0 01.75-.75h4.5a.75.75 0 01.75.75v4.5a.75.75 0 01-1.5 0V5.56l-3.97 3.97a.75.75 0 11-1.06-1.06l3.97-3.97h-2.69a.75.75 0 01-.75-.75zm-12 0A.75.75 0 013.75 3h4.5a.75.75 0 010 1.5H5.56l3.97 3.97a.75.75 0 01-1.06 1.06L4.5 5.56v2.69a.75.75 0 01-1.5 0v-4.5zm11.47 11.78a.75.75 0 111.06-1.06l3.97 3.97v-2.69a.75.75 0 011.5 0v4.5a.75.75 0 01-.75.75h-4.5a.75.75 0 010-1.5h2.69l-3.97-3.97zm-4.94-1.06a.75.75 0 010 1.06L5.56 19.5h2.69a.75.75 0 010 1.5h-4.5a.75.75 0 01-.75-.75v-4.5a.75.75 0 011.5 0v2.69l3.97-3.97a.75.75 0 011.06 0z" clip-rule="evenodd" />
+              </svg>
+              <div v-else @click="handleFullscreen" :class="{ 'mt-auto ml-auto mb-10': isFullscreen }" class="flex items-center justify-center p-2.5 bg-white shadow-sm rounded-full">
+                  <svg class="w-6 h-6 fill-light-gray" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                      <path fill-rule="evenodd" d="M3.22 3.22a.75.75 0 011.06 0l3.97 3.97V4.5a.75.75 0 011.5 0V9a.75.75 0 01-.75.75H4.5a.75.75 0 010-1.5h2.69L3.22 4.28a.75.75 0 010-1.06zm17.56 0a.75.75 0 010 1.06l-3.97 3.97h2.69a.75.75 0 010 1.5H15a.75.75 0 01-.75-.75V4.5a.75.75 0 011.5 0v2.69l3.97-3.97a.75.75 0 011.06 0zM3.75 15a.75.75 0 01.75-.75H9a.75.75 0 01.75.75v4.5a.75.75 0 01-1.5 0v-2.69l-3.97 3.97a.75.75 0 01-1.06-1.06l3.97-3.97H4.5a.75.75 0 01-.75-.75zm10.5 0a.75.75 0 01.75-.75h4.5a.75.75 0 010 1.5h-2.69l3.97 3.97a.75.75 0 11-1.06 1.06l-3.97-3.97v2.69a.75.75 0 01-1.5 0V15z" clip-rule="evenodd" />
+                  </svg>
+              </div>
+          </template>
       </div>
     </div>
   </article>

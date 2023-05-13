@@ -16,7 +16,7 @@ module.exports = {
         'custom-pink': '#FF2D87',
         'custom-purple': '#9087E6',
         'custom-white': '#FEFEFF',
-        'default': '#0F0F11',
+        'default': '#22262F',
         'custom-gray': '#2B2D2E',
         'mid-gray': '#3E3F41',
         'light-gray': '#97979E'

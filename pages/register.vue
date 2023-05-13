@@ -15,8 +15,7 @@ const router = useRouter(),
         lastname: '',
         firstname: '',
         email: '',
-        password: '',
-        avatar_url: ''
+        password: ''
     })
 const handleRegister = async () => {
     if (form.lastname !== '' && form.firstname !== '' && form.email !== '' && form.password !== '') {
@@ -28,7 +27,7 @@ const handleRegister = async () => {
                 firstname: form.firstname,
                 email: form.email,
                 password: form.password,
-                avatar_url: form.avatar_url || 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOs4NnmB39-e9lGrvN3GkdftbUyHCTS_7rf0lmhLbRxg&s'
+                avatar_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOs4NnmB39-e9lGrvN3GkdftbUyHCTS_7rf0lmhLbRxg&s'
             })
             if (user.value) {
                 await store.setUser({ jwt, user: user.value })
@@ -47,9 +46,6 @@ const handleRegister = async () => {
     <form @submit.prevent="handleRegister" class="p-5 flex gap-2 flex-col bg-white shadow-sm rounded-3xl overflow-hidden">
       <h1 class="text-xl font-extrabold mb-5 text-center">Bienvenue dans <span class="text-custom-purple">Community</span>.</h1>
       <h1 class="font-semibold text-center mb-5">Une question ? Toutes les réponses se trouvent ici 👇</h1>
-      <label for="avatar_url">
-        <input v-model="form.avatar_url" id="avatar_url" class="font-medium w-full py-4 px-5 caret-custom-purple rounded-2xl border border-solid border-custom-light-gray focus:border-custom-purple bg-custom-light-gray outline-none" type="text" inputmode="text" placeholder="URL photo de profil">
-      </label>
       <label for="firstname">
         <input v-model="form.firstname" id="firstname" class="font-medium w-full py-4 px-5 caret-custom-purple rounded-2xl border border-solid border-custom-light-gray focus:border-custom-purple bg-custom-light-gray outline-none" type="text" inputmode="text" placeholder="Prénom">
       </label>
@@ -62,7 +58,7 @@ const handleRegister = async () => {
       <label for="password">
         <input v-model="form.password" id="password" class="font-medium w-full py-4 px-5 caret-custom-purple rounded-2xl border border-solid border-custom-light-gray focus:border-custom-purple bg-custom-light-gray outline-none" type="password" inputmode="text" placeholder="Mot de passe">
       </label>
-      <button type="submit" :disabled="form.lastname === '' || form.firstname === '' || form.email === '' || form.password === ''" :class="form.lastname !== '' && form.firstname !== '' && form.email !== '' && form.password !== '' ? 'bg-custom-purple text-white' : 'bg-transparent text-light-gray'" class="w-full flex items-center justify-center gap-2 font-medium mt-5 py-4 px-5 rounded-2xl border border-solid border-light-gray">
+      <button type="submit" :disabled="form.lastname === '' || form.firstname === '' || form.email === '' || form.password === ''" :class="form.lastname !== '' && form.firstname !== '' && form.email !== '' && form.password !== '' ? 'bg-custom-purple text-white' : 'bg-transparent text-light-gray'" class="w-full flex items-center justify-center gap-2 font-semibold mt-5 py-4 px-5 rounded-2xl border border-solid border-light-gray">
         <svg v-if="pending" class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
           <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
           <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
