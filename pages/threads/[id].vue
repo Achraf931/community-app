@@ -21,7 +21,7 @@ pending.value = false
         </template>
         <article class="flex align-baseline justify-start gap-4 rounded-3xl">
                 <NuxtLink class="contents" :to="{ name: 'profile-id', params: { id: data.attributes.author.data.id } }">
-                    <img class="w-10 h-10 rounded-full object-cover shadow-md" :src="data.attributes.author.data.attributes.avatar_url" alt="Photo de profil">
+                    <img class="w-10 h-10 rounded-xl object-cover shadow-md" :src="data.attributes.author.data.attributes.avatar_url" alt="Photo de profil">
                 </NuxtLink>
                 <div class="flex gap-2 items-center w-full">
                     <div class="w-full">
@@ -71,7 +71,7 @@ pending.value = false
 
             <div class="flex flex-col flex-1 h-0">
                 <div class="flex items-center justify-between">
-                    <h2 class="font-bold mb-4 mt-2">Réponses</h2>
+                    <h2 class="font-bold mb-3 mt-2">Réponses</h2>
                     <svg class="w-5 h-5 fill-light-gray" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                         <path d="M18.75 12.75h1.5a.75.75 0 000-1.5h-1.5a.75.75 0 000 1.5zM12 6a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5A.75.75 0 0112 6zM12 18a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5A.75.75 0 0112 18zM3.75 6.75h1.5a.75.75 0 100-1.5h-1.5a.75.75 0 000 1.5zM5.25 18.75h-1.5a.75.75 0 010-1.5h1.5a.75.75 0 010 1.5zM3 12a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5A.75.75 0 013 12zM9 3.75a2.25 2.25 0 100 4.5 2.25 2.25 0 000-4.5zM12.75 12a2.25 2.25 0 114.5 0 2.25 2.25 0 01-4.5 0zM9 15.75a2.25 2.25 0 100 4.5 2.25 2.25 0 000-4.5z" />
                     </svg>

@@ -26,7 +26,7 @@ const handleFullscreen = () => {
       <div class="flex flex-col gap-2 justify-between items-center">
         <div>
             <NuxtLink class="contents" :to="{ name: 'profile-id', params: { id: props.answer.attributes.author.data.id } }">
-                <img class="w-10 h-10 rounded-full object-cover shadow-md" :src="props.answer.attributes.author.data.attributes.avatar_url" alt="Photo de profil">
+                <img class="w-10 h-10 rounded-xl object-cover shadow-md" :src="props.answer.attributes.author.data.attributes.avatar_url" alt="Photo de profil">
             </NuxtLink>
             <div v-if="first" class="flex items-center justify-center flex-col mt-1">
                 <svg class="w-5 h-5 fill-custom-purple" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
