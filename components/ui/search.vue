@@ -1,7 +1,8 @@
 <script setup>
 const props = defineProps({
     data: {
-        type: Object
+        type: Object,
+        default: []
     }
 })
 const query = ref(''),
@@ -9,10 +10,10 @@ const query = ref(''),
     searchResults = ref([]),
     searchMode = ref(false),
     isTyping = ref(false),
-    { data } = props.data ? props : await find('threads', { populate: { answers: { count: true } } })
+    data = ref([])
 const search = useDebounce(() => {
     if (query.value.length > 0) {
-        searchResults.value = data.filter(thread => thread.attributes.description.toLowerCase().includes(query.value.toLowerCase()))
+        searchResults.value = data.value.filter(thread => thread.attributes.description.toLowerCase().includes(query.value.toLowerCase()))
     } else {
         searchResults.value = []
     }
@@ -22,6 +23,13 @@ const searching = () => {
     isTyping.value = true
     search()
 }
+
+const openSearch = async () => {
+    searchMode.value = true
+    const threads = await find('threads', { populate: { answers: { count: true } } })
+    data.value = threads.data
+}
+
 const closeSearch = () => {
     searchMode.value = false
     query.value = ''
@@ -39,7 +47,7 @@ const matchingText = (elem) => {
 <template>
     <div v-if="searchMode" @click="closeSearch" class="absolute backdrop-blur-sm z-20 top-0 left-0 w-screen h-screen bg-default/50"></div>
     <div>
-        <div @click="searchMode = true" class="flex items-center justify-center p-2.5 w-10 h-10 bg-white shadow-sm rounded-full">
+        <div @click="openSearch" class="flex items-center justify-center p-2.5 w-10 h-10 bg-white shadow-sm rounded-full">
             <svg class="w-5 h-5 fill-light-gray stroke-light-gray" stroke-width=".5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                 <path fill-rule="evenodd" d="M10.5 3.75a6.75 6.75 0 100 13.5 6.75 6.75 0 000-13.5zM2.25 10.5a8.25 8.25 0 1114.59 5.28l4.69 4.69a.75.75 0 11-1.06 1.06l-4.69-4.69A8.25 8.25 0 012.25 10.5z" clip-rule="evenodd" />
             </svg>

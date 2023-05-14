@@ -9,7 +9,7 @@ const props = defineProps({
 <template>
     <NuxtLink :to="{ name: 'threads-id', params: { id: props.thread.id } }" class="snap-start flex align-baseline justify-start gap-4 rounded-3xl bg-white shadow-sm p-4">
         <div class="flex flex-col justify-between text-xs font-medium gap-2">
-            <img class="w-10 h-10 rounded-full object-cover shadow-md" :src="props.thread.attributes.author.data.attributes.avatar_url" alt="Photo de profil">
+            <img class="w-10 h-10 rounded-full object-cover shadow-md" width="40" height="40" :src="props.thread.attributes.author.data.attributes.avatar_url" alt="Photo de profil">
             <div>
                 <p class="flex items-center justify-start text-light-gray fill-light-gray gap-1">
                     <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
