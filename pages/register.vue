@@ -19,6 +19,7 @@ const router = useRouter(),
         'Leadership naturel, inspiration et motivation d\'équipe',
         'Esprit créatif, solutions uniques aux défis professionnels'
         ],
+    schools = ['Webstart', 'Itecom Art Design', 'Sorbonne', 'Ecole 42', 'Epitech', 'Epita', 'EEMI', 'HETIC', 'ESGI'],
     pending = ref(false),
     formError = ref(null),
     form = reactive({
@@ -41,7 +42,8 @@ const handleRegister = async () => {
                 avatar_url: 'https://picsum.photos/200',
                 job: jobs[Math.floor(Math.random() * jobs.length)],
                 company: compagnies[Math.floor(Math.random() * compagnies.length)],
-                description: descriptions[Math.floor(Math.random() * descriptions.length)]
+                description: descriptions[Math.floor(Math.random() * descriptions.length)],
+                school: schools[Math.floor(Math.random() * schools.length)]
             })
             if (user.value) {
                 await store.setUser({ jwt, user: user.value })
