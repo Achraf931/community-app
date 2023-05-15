@@ -13,8 +13,8 @@ const store = useAuthStore(),
 
 const handleLogout = async () => {
     try {
-        await logout()
         await store.$reset()
+        await logout()
     } catch (error) {
         console.log(error)
     } finally {

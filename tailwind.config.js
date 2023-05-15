@@ -12,7 +12,7 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        'custom-light-gray': '#F2F2F2',
+        'custom-light-gray': '#F3F6FF',
         'custom-pink': '#FF2D87',
         'custom-purple': '#9087E6',
         'custom-white': '#FEFEFF',

@@ -9,7 +9,7 @@ export default defineNuxtConfig({
             meta: [
                 { name: 'viewport', content: 'width=device-width, initial-scale=1' },
                 { charset: 'utf-8' },
-                { name: 'theme-color', content: '#F2F2F2' },
+                { name: 'theme-color', content: '#F3F6FF' },
                 { name: 'description', content: 'Réseau social d\'entraide pour étudiants.' }
             ]
         }
@@ -78,8 +78,8 @@ export default defineNuxtConfig({
                     purpose: 'maskable'
                 }
             ],
-            theme_color: '#F2F2F2',
-            background_color: '#F2F2F2'
+            theme_color: '#F3F6FF',
+            background_color: '#F3F6FF'
         },
         devOptions: {
             enabled: true,
