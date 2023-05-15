@@ -34,8 +34,6 @@ try {
         <section class="flex flex-col flex-1 overflow-hidden gap-3 px-5 pt-3 pb-0">
             <div class="overflow-scroll flex-1 snap-y flex flex-col gap-3 rounded-2xl">
                 <ui-thread v-for="thread in store.getThreads" :key="thread.id" :thread="thread" />
-                <ui-mini-ad class="!mb-0" />
-                <ui-thread v-for="thread in store.getThreads" :key="thread.id" :thread="thread" />
                 <ui-mini-ad />
             </div>
         </section>

@@ -7,7 +7,7 @@ export default defineNuxtConfig({
                 lang: 'fr'
             },
             meta: [
-                { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+                { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no' },
                 { charset: 'utf-8' },
                 { name: 'theme-color', content: '#F3F6FF' },
                 { name: 'description', content: 'Réseau social d\'entraide pour étudiants.' }
