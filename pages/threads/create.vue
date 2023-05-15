@@ -7,7 +7,7 @@ definePageMeta({
 })
 
 const router = useRouter(),
-    { create, update } = useStrapi(),
+    { create } = useStrapi(),
     store = useAuthStore(),
     pending = ref(false),
     formError = ref(null),
