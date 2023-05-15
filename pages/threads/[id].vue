@@ -66,7 +66,7 @@ pending.value = false
                     <img @click="openedImg = data.document" class="w-10 h-10 rounded-md object-cover" :src="data.document" alt="Document">
                     <img @click="openedImg = data.document" class="w-10 h-10 rounded-md object-cover" :src="data.document" alt="Document">
                 </div>
-                <small v-if="data.attributes.description.length > 80" class="font-semibold block text-custom-purple mt-1" @click="more = !more">Lire {{ more ? 'moins' : 'tout' }}</small>
+                <small v-if="data.attributes.description.length > 80" class="font-semibold block text-white mt-1" @click="more = !more">Lire {{ more ? 'moins' : 'tout' }}</small>
             </div>
 
             <div class="flex flex-col flex-1 h-0">
