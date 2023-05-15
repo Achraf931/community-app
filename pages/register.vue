@@ -79,10 +79,10 @@ const handleRegister = async () => {
             </div>
             <div class="flex items-center justify-center gap-2">
                 <label for="firstname">
-                    <input v-model="form.firstname" id="firstname" class="font-medium w-full py-4 px-5 caret-custom-purple rounded-2xl border border-solid border-custom-light-gray focus:border-custom-purple bg-custom-light-gray outline-none" type="text" inputmode="text" placeholder="Prénom">
+                    <input v-model="form.firstname" id="firstname" class="font-medium text-sm w-full py-4 px-5 caret-custom-purple rounded-2xl border border-solid border-custom-light-gray focus:border-custom-purple bg-custom-light-gray outline-none" type="text" inputmode="text" placeholder="Prénom">
                 </label>
                 <label for="lastname">
-                    <input v-model="form.lastname" id="lastname" class="font-medium w-full py-4 px-5 caret-custom-purple rounded-2xl border border-solid border-custom-light-gray focus:border-custom-purple bg-custom-light-gray outline-none" type="text" inputmode="text" placeholder="Nom">
+                    <input v-model="form.lastname" id="lastname" class="font-medium text-sm w-full py-4 px-5 caret-custom-purple rounded-2xl border border-solid border-custom-light-gray focus:border-custom-purple bg-custom-light-gray outline-none" type="text" inputmode="text" placeholder="Nom">
                 </label>
             </div>
             <label for="email">
