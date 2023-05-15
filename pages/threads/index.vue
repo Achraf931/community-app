@@ -9,7 +9,7 @@ const store = useThreadStore(),
     { find } = useStrapi(),
     pending = ref(true)
 try {
-    const { data } = await find('threads', { populate: { answers: { count: true }, author: true } })
+    const { data } = await find('threads', { sort: { createdAt: 'desc' }, populate: { answers: { count: true }, author: true } })
     if (data) await store.setThreads({ threads: data })
 } catch ({ error }) {
     console.log(error)

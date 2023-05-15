@@ -8,7 +8,7 @@ const pending = ref(true)
 const { find } = useStrapi(),
     store = useThreadStore()
 try {
-    const { data } = await find('threads', { populate: { answers: { count: true }, author: true } })
+    const { data } = await find('threads', { sort: { createdAt: 'desc' }, populate: { answers: { count: true }, author: true } })
     if (data) await store.setThreads({ threads: data })
 } catch ({ error }) {
     console.log(error)
@@ -59,8 +59,6 @@ try {
             </div>
 
             <div class="overflow-scroll flex-1 snap-y flex flex-col gap-3 rounded-2xl">
-                <ui-thread v-for="thread in store.getThreads" :key="thread.id" :thread="thread" />
-                <ui-mini-ad class="!mb-0" />
                 <ui-thread v-for="thread in store.getThreads" :key="thread.id" :thread="thread" />
                 <ui-mini-ad />
             </div>

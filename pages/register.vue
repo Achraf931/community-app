@@ -8,6 +8,17 @@ definePageMeta({
 const router = useRouter(),
     store = useAuthStore(),
     { register } = useStrapiAuth(),
+    jobs = ['Product Manager', 'Développeur Web', 'Web Designer', 'Data Scientist', 'DevOps', 'Product Owner', 'Scrum Master', 'Développeur Front', 'Développeur Back', 'Développeur Fullstack'],
+    compagnies = ['Google', 'Facebook', 'Maiia', 'Franprix', 'Micromania', 'Tinder', 'Useradgents', 'Insider', 'Apple'],
+    descriptions = ['Passionné(e) par l\'art, toujours en quête d\'excellence',
+        'Polyvalent(e) et adaptable, gestion de projets variés',
+        'Créatif(ve) et rigoureux(se), je m\'adapte à tous les projets',
+        'Passionné(e) par le développement web, je suis toujours à la recherche de nouveaux challenges',
+        'Engagé(e) dans le développement continu des compétences',
+        'Résistant(e) au stress, travail efficace sous pression',
+        'Leadership naturel, inspiration et motivation d\'équipe',
+        'Esprit créatif, solutions uniques aux défis professionnels'
+        ],
     pending = ref(false),
     formError = ref(null),
     form = reactive({
@@ -27,7 +38,10 @@ const handleRegister = async () => {
                 firstname: form.firstname,
                 email: form.email,
                 password: form.password,
-                avatar_url: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTOs4NnmB39-e9lGrvN3GkdftbUyHCTS_7rf0lmhLbRxg&s'
+                avatar_url: 'https://picsum.photos/200',
+                job: jobs[Math.floor(Math.random() * jobs.length)],
+                company: compagnies[Math.floor(Math.random() * compagnies.length)],
+                description: descriptions[Math.floor(Math.random() * descriptions.length)]
             })
             if (user.value) {
                 await store.setUser({ jwt, user: user.value })

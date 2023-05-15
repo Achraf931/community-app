@@ -14,11 +14,11 @@ const store = useAuthStore(),
 const handleLogout = async () => {
     try {
         await logout()
+        await store.$reset()
     } catch (error) {
         console.log(error)
     } finally {
         await router.push('/login')
-        store.$reset()
     }
 }
 </script>
