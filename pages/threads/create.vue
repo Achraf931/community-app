@@ -17,7 +17,7 @@ const onSubmit = async () => {
     pending.value = true
     try {
         const { data } = await create('threads', {
-            description,
+            description: description.value,
             author: store.getUser.id
         })
         if (data) await router.push({ name: 'threads-id', params: { id: data.id } })
