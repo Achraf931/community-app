@@ -24,7 +24,7 @@ const handleFullscreen = () => {
   <article ref="answer" :class="isFullscreen ? 'absolute top-0 left-0 w-screen h-screen z-30 items-start p-5 rounded-none bg-custom-light-gray' : 'rounded-3xl relative bg-white'" class="snap-start flex justify-start gap-4 shadow-sm p-4">
       <div class="flex flex-col gap-2 justify-between items-center">
         <div>
-            <NuxtLink class="contents" :to="{ name: 'profile-id', params: { id: props.answer.attributes.author.data.id } }">
+            <NuxtLink class="contents min-w-[40px]" :to="{ name: 'profile-id', params: { id: props.answer.attributes.author.data.id } }">
                 <img class="w-10 h-10 rounded-xl object-cover shadow-md" :src="props.answer.attributes.author.data.attributes.avatar_url" alt="Photo de profil">
             </NuxtLink>
             <div v-if="first" class="flex items-center justify-center flex-col mt-1">
