@@ -62,7 +62,7 @@ const props = defineProps({
               mode="out-in"
               appear
             >
-                <div v-show="open" class="duration-150 absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-mid-gray shadow-lg focus:outline-none overflow-hidden" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                <div v-show="open" class="duration-150 absolute right-0 z-10 mt-2 w-56 origin-top-right rounded-md bg-mid-gray shadow-custom-light-gray shadow-lg focus:outline-none overflow-hidden" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
                     <div role="none">
                         <p class="hover:bg-light-gray text-custom-white block px-4 font-medium py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-0">Signaler</p>
                         <p class="hover:bg-light-gray text-custom-white block px-4 font-medium py-2 text-sm" role="menuitem" tabindex="-1" id="menu-item-1">Partager</p>

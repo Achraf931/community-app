@@ -47,7 +47,7 @@ const matchingText = (elem) => {
 <template>
     <div v-if="searchMode" @click="closeSearch" class="absolute backdrop-blur-sm z-20 top-0 left-0 w-screen h-screen bg-default/50"></div>
     <div>
-        <div @click="openSearch" class="flex items-center justify-center p-2.5 w-10 h-10 bg-white shadow-sm rounded-full">
+        <div @click="openSearch" class="flex items-center justify-center p-2.5 w-10 h-10 bg-custom-light-gray shadow-custom-light-gray shadow-sm rounded-full">
             <svg class="w-5 h-5 fill-light-gray stroke-light-gray" stroke-width=".5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                 <path fill-rule="evenodd" d="M10.5 3.75a6.75 6.75 0 100 13.5 6.75 6.75 0 000-13.5zM2.25 10.5a8.25 8.25 0 1114.59 5.28l4.69 4.69a.75.75 0 11-1.06 1.06l-4.69-4.69A8.25 8.25 0 012.25 10.5z" clip-rule="evenodd" />
             </svg>
@@ -55,7 +55,7 @@ const matchingText = (elem) => {
 
         <div v-if="searchMode" class="absolute z-20 left-0 pt-0 p-5 max-h-[390px] w-full">
             <label for="search"
-                   class="relative flex items-center justify-start gap-4 rounded-full w-full bg-white shadow-sm mb-3">
+                   class="relative flex items-center justify-start gap-4 rounded-full w-full bg-white shadow-custom-light-gray shadow-sm mb-3">
                 <svg class="w-5 h-5 fill-light-gray stroke-light-gray absolute left-5 top-1/2 -translate-y-1/2 pointer-events-none" stroke-width=".5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                     <path fill-rule="evenodd" d="M10.5 3.75a6.75 6.75 0 100 13.5 6.75 6.75 0 000-13.5zM2.25 10.5a8.25 8.25 0 1114.59 5.28l4.69 4.69a.75.75 0 11-1.06 1.06l-4.69-4.69A8.25 8.25 0 012.25 10.5z" clip-rule="evenodd" />
                 </svg>

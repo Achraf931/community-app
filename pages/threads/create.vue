@@ -13,8 +13,7 @@ useHead({
   }]
 })
 
-const router = useRouter(),
-    { create } = useStrapi(),
+const { create } = useStrapi(),
     store = useAuthStore(),
     pending = ref(false),
     formError = ref(null),
@@ -23,13 +22,19 @@ const router = useRouter(),
 const onSubmit = async () => {
   pending.value = true
   try {
-    const { data } = await create('threads', {
-      content: content.value,
-      author: store.getUser.id
-    })
-    if (data) await router.push({ name: 'threads-id', params: { id: data.id } })
+    const { data } = await useApi(`threads?${
+        useQueryString({
+          sort: { createdAt: 'desc' },
+          populate: { likes: { populate: '*' }, answers: { count: true }, author: true }
+        })
+    }`, { method: 'POST', body: {
+        data: {
+          content: content.value,
+          author: store.getUser.id
+        }
+      } }).then(({ data }) => data.value)
+    if (data) await navigateTo({ name: 'threads-id', params: { id: data.id } })
   } catch (error) {
-    console.log(error)
     formError.value = error
   } finally {
     pending.value = false

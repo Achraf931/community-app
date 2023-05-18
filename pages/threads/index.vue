@@ -6,14 +6,15 @@ definePageMeta({
   middleware: 'auth'
 })
 const store = useThreadStore(),
-    { find } = useStrapi(),
     pending = ref(true)
 try {
-  const { data } = await find('threads', {
-    sort: { createdAt: 'desc' },
-    populate: { likes: { populate: '*' }, answers: { count: true }, author: true }
-  })
-  if (data) await store.setThreads({ threads: data })
+  const threads = await useApi(`threads?${
+      useQueryString({
+        sort: { createdAt: 'desc' },
+        populate: { likes: { populate: '*' }, answers: { count: true }, author: true }
+      })
+  }`).then(({ data }) => data.value.data)
+  if (threads) await store.setThreads({ threads })
 } catch ({ error }) {
   console.log(error)
 } finally {
@@ -25,7 +26,7 @@ try {
   <template v-else>
     <section class="px-5 pb-5">
       <article
-          class="flex items-center text-center justify-start gap-4 rounded-3xl text-white background-custom shadow-sm p-5 aspect-video">
+          class="flex items-center text-center justify-start gap-4 rounded-3xl text-white background-custom shadow-custom-light-gray shadow-sm p-5 aspect-video">
         <h1 class="font-bold text-xl">Un bon petit wording pour bien remplir tout ça !</h1>
       </article>
     </section>

@@ -7,7 +7,7 @@ export const useThreadStore = defineStore('ThreadStore', {
     },
     getters: {
         getThreads() {
-            return this.threads
+            return toRaw(this.threads)
         }
     },
     actions: {

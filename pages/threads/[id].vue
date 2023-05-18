@@ -4,22 +4,22 @@ definePageMeta({
   middleware: 'auth'
 })
 const { $dayjs } = useNuxtApp(),
-    { findOne } = useStrapi(),
     pending = ref(true),
     route = useRoute(),
     openedImg = ref(null),
     answer = ref(''),
     user = useStrapiUser(),
     container = ref(null),
-    strapi = useStrapi(),
     more = ref(true),
-    { data } = await findOne('threads', `${route.params.id}`, {
-      populate: {
-        author: true,
-        likes: { populate: '*' },
-        answers: { sort: { createdAt: 'desc' }, populate: '*' }
-      }
-    })
+    { data } = await useApi(`threads/${route.params.id}?${
+        useQueryString({
+          populate: {
+            author: true,
+            likes: { populate: '*' },
+            answers: { sort: { createdAt: 'desc' }, populate: '*' }
+          }
+        })
+    }`).then(({ data }) => data.value)
     data.attributes.content = data.attributes.content.replace(/(https?:\/\/\S+)/g, (url) => {
   return `<a href="${url}" target="_blank" class="font-bold">Voir le lien</a>`
 })
@@ -28,19 +28,22 @@ pending.value = false
 const onSubmit = async () => {
   if (!answer.value) return
   try {
-    await strapi.create('answers', {
-      content: answer.value,
-      thread: data.id,
-      author: user.value.id
-    })
-    const { data: thread } = await strapi.findOne('threads', data.id, {
-      populate: {
-        author: true,
-        likes: { populate: '*' },
-        answers: { sort: { createdAt: 'desc' }, populate: '*' }
-      }
-    })
-    data.attributes.answers = thread.attributes.answers
+    const response = await useApi(`answers?${
+        useQueryString({
+          sort: { createdAt: 'desc' },
+          populate: {
+            author: true,
+            likes: { populate: '*' }
+          }
+        })
+    }`, { method: 'POST', body: {
+        data: {
+          content: answer.value,
+          thread: data.id,
+          author: user.value.id
+        }
+      } }).then(({ data }) => data.value.data)
+    data.attributes.answers.data.unshift(response)
     answer.value = ''
   } catch (error) {
     console.log(error)
@@ -62,7 +65,7 @@ const onSubmit = async () => {
     </template>
     <article class="flex align-baseline justify-start gap-4 rounded-3xl">
       <NuxtLink class="contents" :to="{ name: 'profile-id', params: { id: data.attributes.author.data.id } }">
-        <img class="w-10 h-10 rounded-xl object-cover shadow-md"
+        <img class="w-10 h-10 rounded-xl object-cover shadow-custom-light-gray shadow-md"
              :src="data.attributes.author.data.attributes.avatar_url" alt="Photo de profil">
       </NuxtLink>
       <div class="flex gap-2 items-center w-full">
@@ -82,7 +85,7 @@ const onSubmit = async () => {
         </div>
       </div>
     </article>
-    <div class="rounded-3xl bg-custom-purple shadow-sm p-4">
+    <div class="rounded-3xl bg-custom-purple shadow-custom-light-gray shadow-sm p-4">
       <div class="flex items-center justify-between font-medium mb-1">
         <small class="inline-flex text-xs items-center gap-2 text-white fill-white">
           <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">

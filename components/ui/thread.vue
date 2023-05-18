@@ -54,9 +54,9 @@ props.thread.attributes.content = props.thread.attributes.content.replace(/(http
 </script>
 <template>
   <div @click.prevent="onClick"
-       class="snap-start flex align-baseline justify-start gap-4 rounded-3xl bg-white shadow-sm p-4">
+       class="snap-start flex align-baseline justify-start gap-4 rounded-3xl bg-custom-light-gray shadow-custom-light-gray shadow-md p-4">
     <div class="flex flex-col justify-between text-xs font-medium gap-2 min-w-[2.5rem]">
-      <img class="w-10 h-10 rounded-xl object-cover shadow-md" width="40" height="40"
+      <img class="w-10 h-10 rounded-xl object-cover shadow-custom-light-gray shadow-md" width="40" height="40"
            :src="props.thread.attributes.author.data.attributes.avatar_url" alt="Photo de profil">
       <div>
         <p class="flex items-center justify-start text-light-gray fill-light-gray gap-1">
@@ -67,7 +67,7 @@ props.thread.attributes.content = props.thread.attributes.content.replace(/(http
           </svg>
           {{ props.thread.attributes.answers.data.attributes.count }}
         </p>
-        <p :class="iLiked ? 'fill-custom-purple' : 'fill-light-gray'"
+        <p :class="iLiked ? 'fill-custom-pink' : 'fill-light-gray'"
            class="flex items-center justify-start text-light-gray gap-1">
           <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
             <path

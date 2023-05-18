@@ -1,5 +1,5 @@
 <template>
-    <article class="snap-start flex items-center justify-start gap-4 rounded-3xl bg-custom-purple shadow-sm mb-3">
+    <article class="snap-start flex items-center justify-start gap-4 rounded-3xl bg-custom-purple shadow-custom-light-gray shadow-sm mb-3">
         <img class="w-8 h-8 ml-4" width="128" height="128" src="/images/revolut.png" alt="Logo Revolut">
         <div class="flex gap-2 items-center w-full py-4">
             <div class="w-full">

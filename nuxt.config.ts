@@ -9,10 +9,14 @@ export default defineNuxtConfig({
             meta: [
                 { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no' },
                 { charset: 'utf-8' },
-                { name: 'theme-color', content: '#F3F6FF' },
+                { name: 'theme-color', content: '#fff' },
                 { name: 'description', content: 'Réseau social d\'entraide pour étudiants.' }
             ]
         }
+    },
+    routeRules: {
+        '/': { ssr: true },
+        '/threads': { ssr: true }
     },
     modules: [
         '@vueuse/nuxt',
@@ -78,8 +82,8 @@ export default defineNuxtConfig({
                     purpose: 'maskable'
                 }
             ],
-            theme_color: '#F3F6FF',
-            background_color: '#F3F6FF'
+            theme_color: '#fff',
+            background_color: '#fff'
         },
         devOptions: {
             enabled: true,
