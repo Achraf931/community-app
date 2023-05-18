@@ -73,9 +73,8 @@ const handleRegister = async () => {
         </div>
         <form @submit.prevent="handleRegister" class="p-5 flex gap-2 flex-col bg-white overflow-hidden rounded-t-3xl">
             <div class="mb-5">
-                <NuxtLink to="/" class="text-xl font-extrabold mb-5 text-center text-custom-purple">Bonjour 👋</NuxtLink>
-                <h1 class="font-medium text-light-gray mt-2 text-sm">Une question ? Toutes les réponses se trouvent ici 👇</h1>
-
+                <h1 class="text-xl font-extrabold mb-5 text-center text-custom-purple">Bonjour 👋</h1>
+                <h2 class="font-medium text-light-gray text-center mt-2 text-sm">Une question ? Toutes les réponses se trouvent ici 👇</h2>
             </div>
             <div class="flex items-center justify-center gap-2">
                 <label for="firstname">

@@ -13,7 +13,7 @@ const query = ref(''),
     data = ref([])
 const search = useDebounce(() => {
     if (query.value.length > 0) {
-        searchResults.value = data.value.filter(thread => thread.attributes.description.toLowerCase().includes(query.value.toLowerCase()))
+        searchResults.value = data.value.filter(thread => thread.attributes.content.toLowerCase().includes(query.value.toLowerCase()))
     } else {
         searchResults.value = []
     }
@@ -65,7 +65,7 @@ const matchingText = (elem) => {
             <p v-if="query !== '' && !isTyping && searchResults.length === 0" class="rounded-full bg-white text-center p-4 font-medium text-sm">Aucun résultat</p>
             <div v-else class="rounded-3xl max-h-[390px] overflow-auto snap-y">
                 <NuxtLink :to="{ name: 'threads-id', params: { id: result.id } }" v-for="result in searchResults" :key="result.id" class="snap-start flex gap-3 items-center justify-between bg-white first:rounded-t-3xl last:rounded-b-3xl p-5 text-sm border-b border-solid border-custom-purple">
-                    <p class="font-medium" v-html="matchingText(result.attributes.description)" />
+                    <p class="font-medium" v-html="matchingText(result.attributes.content)" />
                     <div class="text-center fill-custom-purple text-custom-purple">
                         <svg class="w-3 h-3 mx-auto" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
                             <path d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z" />

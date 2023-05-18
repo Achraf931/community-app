@@ -54,8 +54,8 @@ const handleLogin = async () => {
         </div>
         <form @submit.prevent="handleLogin" class="p-5 flex gap-2 flex-col bg-white overflow-hidden rounded-t-3xl">
             <div class="mb-5">
-                <NuxtLink to="/" class="text-xl font-extrabold mb-5 text-center text-custom-purple">Re-bonjour 👋</NuxtLink>
-                <h1 class="font-medium text-light-gray mt-2 text-sm">On se disait bien qu'on vous avait déjà vu 😉</h1>
+                <h1 class="text-xl font-extrabold mb-5 text-center text-custom-purple">Re-bonjour 👋</h1>
+                <h2 class="font-medium text-light-gray text-center text-sm">On se disait bien qu'on vous avait déjà vu 😉</h2>
             </div>
             <label for="email">
                 <input v-model="form.email" id="email" class="font-medium text-sm w-full py-4 px-5 caret-custom-purple rounded-2xl border border-solid border-custom-light-gray focus:border-custom-purple bg-custom-light-gray outline-none" type="email" inputmode="email" placeholder="E-mail">
@@ -72,7 +72,6 @@ const handleLogin = async () => {
                 </svg>
                 Me connecter
             </button>
-            <p v-if="formError" class="text-xs text-center text-red-500 mt-2">{{ formError }}</p>
             <div class="text-light-gray text-xs mt-3 text-center flex items-center justify-center gap-2">
                 <div class="h-[0.5px] flex-1 bg-light-gray"></div>
                 <div class="mx-auto rounded-2xl border-2 border-solid border-custom-light-gray bg-custom-light-gray flex items-center justify-center">

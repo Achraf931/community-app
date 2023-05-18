@@ -52,10 +52,10 @@ const store = useAuthStore()
 </template>
 <style>
 .active > svg {
-    fill: #9087E6 !important;
+    fill: rgb(79 70 229) !important;
 }
 .profil-active > img {
-    border-color: #9087E6 !important;
-    fill: #9087E6 !important;
+    border-color: rgb(79 70 229) !important;
+    fill: rgb(79 70 229) !important;
 }
 </style>
