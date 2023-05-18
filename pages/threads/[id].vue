@@ -87,7 +87,7 @@ const onSubmit = async () => {
     </article>
     <div class="rounded-3xl bg-custom-purple shadow-custom-light-gray shadow-sm p-4">
       <div class="flex items-center justify-between font-medium mb-1">
-        <small class="inline-flex text-xs items-center gap-2 text-white fill-white">
+        <small class="inline-flex text-xs items-center gap-2 text-white fill-white opacity-60">
           <svg class="w-3 h-3" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
             <path
                 d="M12 1c-6.338 0-12 4.226-12 10.007 0 2.05.738 4.063 2.047 5.625.055 1.83-1.023 4.456-1.993 6.368 2.602-.47 6.301-1.508 7.978-2.536 9.236 2.247 15.968-3.405 15.968-9.457 0-5.812-5.701-10.007-12-10.007zm0 15c-.565 0-1.024-.459-1.024-1.025 0-.565.459-1.024 1.024-1.024.566 0 1.024.459 1.024 1.024 0 .566-.458 1.025-1.024 1.025zm1.606-4.858c-.74.799-.775 1.241-.766 1.785h-1.643c-.006-1.208.016-1.742 1.173-2.842.469-.446.84-.799.788-1.493-.047-.66-.599-1.004-1.117-1.004-.581 0-1.261.432-1.261 1.649h-1.646c0-1.966 1.155-3.237 2.941-3.237.849 0 1.592.278 2.09.783.468.473.709 1.125.7 1.883-.013 1.134-.704 1.878-1.259 2.476z"/>
@@ -96,15 +96,15 @@ const onSubmit = async () => {
         </small>
         <div class="text-xs text-white flex items-center justify-end gap-3">
           <p class="flex items-center justify-start gap-1">
-            <svg class="flex items-center justify-center w-3 h-3 fill-white"
-                 xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
-              <path
-                  d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z"/>
+            <svg class="flex items-center justify-center w-5 h-5 fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+              <path fill-rule="evenodd"
+                    d="M4.804 21.644A6.707 6.707 0 006 21.75a6.721 6.721 0 003.583-1.029c.774.182 1.584.279 2.417.279 5.322 0 9.75-3.97 9.75-9 0-5.03-4.428-9-9.75-9s-9.75 3.97-9.75 9c0 2.409 1.025 4.587 2.674 6.192.232.226.277.428.254.543a3.73 3.73 0 01-.814 1.686.75.75 0 00.44 1.223zM8.25 10.875a1.125 1.125 0 100 2.25 1.125 1.125 0 000-2.25zM10.875 12a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0zm4.875-1.125a1.125 1.125 0 100 2.25 1.125 1.125 0 000-2.25z"
+                    clip-rule="evenodd"/>
             </svg>
             {{ data.attributes.likes.data.length }}
           </p>
           <p class="flex items-center justify-start gap-1">
-            <svg class="flex items-center justify-center w-3 h-3 fill-white"
+            <svg class="flex items-center justify-center w-5 h-5 fill-white"
                  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
               <path
                   d="M11.645 20.91l-.007-.003-.022-.012a15.247 15.247 0 01-.383-.218 25.18 25.18 0 01-4.244-3.17C4.688 15.36 2.25 12.174 2.25 8.25 2.25 5.322 4.714 3 7.688 3A5.5 5.5 0 0112 5.052 5.5 5.5 0 0116.313 3c2.973 0 5.437 2.322 5.437 5.25 0 3.925-2.438 7.111-4.739 9.256a25.175 25.175 0 01-4.244 3.17 15.247 15.247 0 01-.383.219l-.022.012-.007.004-.003.001a.752.752 0 01-.704 0l-.003-.001z"/>
@@ -136,7 +136,7 @@ const onSubmit = async () => {
     </div>
     <div class="relative">
       <textarea v-model="answer" @submit="onSubmit" type="text" rows="1" placeholder="Répondre"
-                class="h-full resize-none font-medium text-sm w-full py-2 px-5 pr-10 caret-custom-purple rounded-2xl border border-solid border-white focus:border-custom-purple bg-white outline-none"></textarea>
+                class="h-full resize-none font-medium text-sm w-full py-2 px-5 pr-10 caret-custom-purple rounded-2xl border border-solid border-white focus:border-custom-purple bg-custom-light-gray outline-none"></textarea>
       <div v-if="answer !== ''" @click="onSubmit"
            class="absolute top-1/2 right-3 -translate-y-1/2 bg-custom-purple rounded-full">
         <svg class="w-6 h-6 stroke-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
