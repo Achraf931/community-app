@@ -9,7 +9,7 @@ definePageMeta({
 useHead({
   meta: [{
     name: 'theme-color',
-    content: '#9087E6'
+    content: '#4F46E5'
   }]
 })
 

@@ -14,7 +14,7 @@ module.exports = {
       colors: {
         'custom-light-gray': '#F3F6FF',
         'custom-pink': '#FF2D87',
-        'custom-purple': 'rgb(79 70 229)',
+        'custom-purple': '#4F46E5',
         'custom-white': '#FEFEFF',
         'default': '#22262F',
         'custom-gray': '#2B2D2E',
