@@ -111,8 +111,7 @@ props.answer.attributes.content = props.answer.attributes.content.replace(/(http
 })
 </script>
 <template>
-  <article @click="onClick"
-           :class="isFullscreen ? 'absolute top-0 left-0 w-screen h-screen z-30 items-start p-5 rounded-none bg-white' : 'rounded-3xl relative'"
+  <article :class="isFullscreen ? 'absolute top-0 left-0 w-screen h-screen z-30 items-start p-5 rounded-none bg-white' : 'rounded-3xl relative'"
            class="snap-start bg-custom-light-gray flex justify-start gap-4 shadow-custom-light-gray shadow-sm p-4">
     <div class="flex flex-col gap-2 items-center">
       <div>
@@ -201,15 +200,19 @@ props.answer.attributes.content = props.answer.attributes.content.replace(/(http
           </div>
         </div>
         <p class="text-xs text-light-gray font-medium mb-4">{{ props.answer.attributes.author.data.attributes.job }}</p>
-        <p v-if="props.answer.attributes.content.length >= 200"
+        <p @click="onClick" v-if="props.answer.attributes.content.length >= 200"
            :class="isFullscreen ? 'line-clamp-none overflow-auto mb-5 bg-white p-5 rounded-2xl' : 'line-clamp-2 text-ellipsis'"
-           class="content text-sm font-medium">{{ props.answer.attributes.content }}</p>
-        <p v-else-if="props.answer.attributes.content.length >= 80 && props.answer.attributes.content.length < 200"
+           class="content text-sm font-medium">
+          {{ props.answer.attributes.content }}
+        </p>
+        <p @click="onClick" v-else-if="props.answer.attributes.content.length >= 80 && props.answer.attributes.content.length < 200"
            :class="more ? 'line-clamp-none' : 'line-clamp-2 text-ellipsis'" class="content text-sm font-medium">
-          {{ props.answer.attributes.content }}</p>
-        <p v-else-if="props.answer.attributes.content.length < 80"
+          {{ props.answer.attributes.content }}
+        </p>
+        <p @click="onClick" v-else-if="props.answer.attributes.content.length < 80"
            :class="more ? 'line-clamp-none' : 'line-clamp-2 text-ellipsis'" class="content text-sm font-medium">
-          {{ props.answer.attributes.content }}</p>
+          {{ props.answer.attributes.content }}
+        </p>
         <p v-if="props.answer.attributes.content.length >= 80 && props.answer.attributes.content.length < 200"
            class="text-xs font-semibold block text-custom-purple mt-1" @click="more = !more">Lire
           {{ more ? 'moins' : 'tout' }}</p>
