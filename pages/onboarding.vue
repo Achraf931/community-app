@@ -7,13 +7,13 @@
   useHead({
       meta: [{
           name: 'theme-color',
-          content: '#FFCA60'
+          content: '#CFE34A'
       }]
   })
 </script>
 
 <template>
-  <section class="flex-1 bg-[#FFCA60] flex flex-col gap-5 items-center justify-around p-5">
+  <section class="flex-1 bg-[#CFE34A] flex flex-col gap-5 items-center justify-around p-5">
       <div>
           <h1 class="text-4xl text-center font-black dark:text-white">
               B<span class="text-custom-purple">r</span>inging<br />it <span class="text-white">a</span>ll

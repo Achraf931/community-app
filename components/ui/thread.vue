@@ -32,19 +32,26 @@ const onClick = async () => {
   counter.value = 0
   try {
     const liked = threadUpdated.value.attributes.likes.data.filter(like => like.attributes.author.data.id === user.value.id)
-    console.log(liked)
     if (!!liked.length) {
-      console.log('delete')
       threadUpdated.value.attributes.likes.data = [...threadUpdated.value.attributes.likes.data.filter(like => like.id !== liked[0].id)]
       await strapi.delete('likes', liked[0].id)
     } else {
-      console.log('create')
-      await strapi.create('likes', {
-        thread: props.thread.id,
-        author: user.value.id
-      })
-      const { data: thread } = await strapi.findOne('threads', props.thread.id, { populate: { likes: { populate: '*' }, answers: { count: true }, author: true } })
-      threadUpdated.value = thread
+      const thread = await useApi(`likes?${
+          useQueryString({
+            populate: {
+              thread: { populate: { likes: { populate: '*' } } }
+            }
+          })
+      }`, {
+        method: 'POST',
+        body: {
+          data: {
+            thread: props.thread.id,
+            author: user.value.id
+          }
+        }
+      }).then(({ data }) => data.value.data.attributes.thread.data)
+      threadUpdated.value.attributes.likes = thread.attributes.likes
     }
   } catch (error) {
     console.log(error)
