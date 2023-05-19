@@ -83,7 +83,10 @@ const handleComment = async () => {
     await useApi(`comments?${
         useQueryString({
           populate: {
-            author: true
+            author: true,
+            likes: {
+              populate: '*'
+            }
           }
         })
     }`, {
