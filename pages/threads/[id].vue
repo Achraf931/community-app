@@ -17,7 +17,26 @@ const { $dayjs } = useNuxtApp(),
           populate: {
             author: true,
             likes: { populate: '*' },
-            answers: { sort: { createdAt: 'desc' }, populate: { comments: { populate: '*' }, author: true, thread: { populate: '*' }, likes: { populate: '*' } } }
+            answers: {
+              sort: {
+                createdAt: 'desc'
+              },
+              populate: {
+                comments: {
+                  populate: {
+                    author: true,
+                    likes: { populate: '*' }
+                  }
+                },
+                author: true,
+                thread: {
+                  populate: '*'
+                },
+                likes: {
+                  populate: '*'
+                }
+              }
+            }
           }
         })
     }`).then(({ data }) => {
@@ -27,7 +46,7 @@ const { $dayjs } = useNuxtApp(),
     iLiked = computed(() => {
       return !!threadUpdated.value.attributes.likes.data.filter(like => like.attributes.author.data.id === user.value.id).length
     })
-    data.attributes.content = data.attributes.content.replace(/(https?:\/\/\S+)/g, (url) => {
+data.attributes.content = data.attributes.content.replace(/(https?:\/\/\S+)/g, (url) => {
   return `<a href="${url}" target="_blank" class="font-bold">Voir le lien</a>`
 })
 pending.value = false
@@ -43,13 +62,15 @@ const onSubmit = async () => {
             likes: { populate: '*' }
           }
         })
-    }`, { method: 'POST', body: {
+    }`, {
+      method: 'POST', body: {
         data: {
           content: answer.value,
           thread: data.id,
           author: user.value.id
         }
-      } }).then(({ data }) => data.value.data)
+      }
+    }).then(({ data }) => data.value.data)
     data.attributes.answers.data.unshift(response)
     answer.value = ''
   } catch (error) {
@@ -140,7 +161,8 @@ const handleLike = async () => {
             {{ data.attributes.likes.data.length }}
           </p>
           <p class="flex items-center justify-start gap-1">
-            <svg class="flex items-center justify-center w-5 h-5 fill-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+            <svg class="flex items-center justify-center w-5 h-5 fill-white" xmlns="http://www.w3.org/2000/svg"
+                 viewBox="0 0 24 24" fill="currentColor">
               <path fill-rule="evenodd"
                     d="M4.804 21.644A6.707 6.707 0 006 21.75a6.721 6.721 0 003.583-1.029c.774.182 1.584.279 2.417.279 5.322 0 9.75-3.97 9.75-9 0-5.03-4.428-9-9.75-9s-9.75 3.97-9.75 9c0 2.409 1.025 4.587 2.674 6.192.232.226.277.428.254.543a3.73 3.73 0 01-.814 1.686.75.75 0 00.44 1.223zM8.25 10.875a1.125 1.125 0 100 2.25 1.125 1.125 0 000-2.25zM10.875 12a1.125 1.125 0 112.25 0 1.125 1.125 0 01-2.25 0zm4.875-1.125a1.125 1.125 0 100 2.25 1.125 1.125 0 000-2.25z"
                     clip-rule="evenodd"/>

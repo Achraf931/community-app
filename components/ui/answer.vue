@@ -241,13 +241,7 @@ props.answer.attributes.content = props.answer.attributes.content.replace(/(http
         </div>
         <p v-if="comments.length" @click="showComments = !showComments" class="text-custom-purple font-medium text-xs mt-1.5">{{ showComments ? 'Cacher' : 'Voir' }} {{ comments.length === 1 ? 'le' : `les ${comments.length}` }} commentaire{{ comments.length > 1 ? 's' : '' }}</p>
         <div v-if="showComments && comments.length" class="flex flex-col items-start justify-start gap-4 mt-2">
-          <div v-for="comment in comments" :key="comment.id" class="text-xs font-medium">
-            <div class="flex items-center justify-start gap-2 font-semibold">
-              <img class="rounded-md w-5 h-5" :src="comment.attributes.author.data.attributes.avatar_url" alt="">
-              <p>{{ comment.attributes.author.data.attributes.firstname }} {{ comment.attributes.author.data.attributes.lastname }}</p>
-            </div>
-            <p class="ml-7 text-light-gray">{{ comment.attributes.content }}</p>
-          </div>
+          <ui-comment v-for="comment in comments" :key="comment.id" :comment="comment" />
         </div>
       </div>
     </div>
