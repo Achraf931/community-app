@@ -15,7 +15,7 @@ export default defineNuxtConfig({
                 { property: 'og:type', content: 'article' },
                 { property: 'fb:app_id', content: '6148163521925860' },
                 { property: 'og:description', content: 'Réseau social d\'entraide pour étudiants.' },
-                { property: 'og:image', content: '/images/preview.png' },
+                { property: 'og:image', content: 'https://community-social.netlify.app/images/preview.png' },
                 { property: 'og:url', content: 'https://community-social.netlify.app' },
                 { name: 'twitter:card', content: 'summary_large_image' }
             ]
