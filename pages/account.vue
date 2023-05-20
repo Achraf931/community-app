@@ -24,20 +24,17 @@ const handleLogout = async () => {
 </script>
 <template>
   <section class="flex flex-col justify-between items-start flex-1 h-0">
-    <div class="bg-white px-5 flex flex-col pb-5 gap-5">
-      <p v-if="user.description" class="items-center w-full bg-white font-medium text-sm">{{ user.description }}</p>
-
-      <div class="grid grid-cols-3 divide-x divide-custom-purple items-center w-full bg-white rounded-2xl">
-        <h2 class="font-semibold text-xs text-center break-words">0<br/>followers</h2>
-        <h2 class="font-semibold text-xs text-center break-words">0<br/>following</h2>
-        <h2 class="font-semibold text-xs text-center break-words">{{ user.threads.count }}<br/>threads</h2>
+    <div class="bg-white px-5 flex flex-col pb-5 gap-5 w-full">
+      <div class="flex items-center gap-4 justify-center divide-x divide-custom-purple w-full bg-white rounded-2xl">
+        <h2 class="font-bold text-xs text-center">0<br/><span class="font-normal">Followers</span></h2>
+        <h2 class="font-bold text-xs text-center pl-3">0<br/><span class="font-normal">Following</span></h2>
+        <h2 class="font-bold text-xs text-center pl-3">{{ user.threads.count }}<br/><span class="font-normal">Threads</span></h2>
       </div>
 
-      <ui-mini-ad class="!mb-0"/>
+      <p v-if="user.description" class="text-center font-medium text-sm">{{ user.description }}</p>
     </div>
 
-    <div class="text-sm font-medium w-full flex-1 h-0 flex items-start justify-start flex-col">
-      <div class="overflow-auto snap-y flex-1 w-full flex flex-col rounded-2xl mb-3">
+      <div class="overflow-auto snap-y flex-1 w-full flex flex-col mb-3 text-sm font-medium border-t border-solid border-light-gray/10">
         <div
             class="snap-start flex items-center justify-between p-5 border-b border-solid border-light-gray/10">
           <div class="flex items-center justify-start gap-3 text-default">
@@ -125,6 +122,5 @@ const handleLogout = async () => {
           </svg>
         </div>
       </div>
-    </div>
   </section>
 </template>

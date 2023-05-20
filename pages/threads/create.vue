@@ -2,7 +2,7 @@
 import { useAuthStore } from '@/stores/AuthStore'
 
 definePageMeta({
-  layout: 'sign',
+  layout: 'create',
   middleware: 'auth'
 })
 

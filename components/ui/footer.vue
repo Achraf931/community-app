@@ -4,7 +4,7 @@ import { useAuthStore } from '@/stores/AuthStore'
 const store = useAuthStore()
 </script>
 <template>
-    <nav class="rounded-t-3xl z-10 p-5 pt-0">
+    <nav class="rounded-t-3xl z-10 p-5 pt-0 bg-transparent">
         <ul class="flex items-center justify-around bg-default rounded-3xl">
             <li class="p-2">
                 <NuxtLink exact-active-class="active" to="/" aria-label="Accéder à la page d'accueil">

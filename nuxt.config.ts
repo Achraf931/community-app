@@ -10,7 +10,12 @@ export default defineNuxtConfig({
                 { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no' },
                 { charset: 'utf-8' },
                 { name: 'theme-color', content: '#fff' },
-                { name: 'description', content: 'Réseau social d\'entraide pour étudiants.' }
+                { name: 'description', content: 'Réseau social d\'entraide pour étudiants.' },
+                { property: 'og:title', content: 'Community' },
+                { property: 'og:description', content: 'Réseau social d\'entraide pour étudiants.' },
+                { property: 'og:image', content: '/images/preview.png' },
+                { property: 'og:url', content: 'https://community-social.netlify.app' },
+                { name: 'twitter:card', content: 'summary_large_image' }
             ]
         }
     },
@@ -33,6 +38,12 @@ export default defineNuxtConfig({
             lang: 'fr',
             start_url: '/onboarding',
             icons: [
+                {
+                    src: '/icons/icon-48x48.png',
+                    sizes: '48x48',
+                    type: 'image/png',
+                    purpose: 'maskable'
+                },
                 {
                     src: '/icons/icon-72x72.png',
                     sizes: '72x72',
@@ -66,6 +77,12 @@ export default defineNuxtConfig({
                 {
                     src: '/icons/icon-192x192.png',
                     sizes: '192x192',
+                    type: 'image/png',
+                    purpose: 'maskable'
+                },
+                {
+                    src: '/icons/icon-256x256.png',
+                    sizes: '256x256',
                     type: 'image/png',
                     purpose: 'maskable'
                 },
