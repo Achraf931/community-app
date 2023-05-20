@@ -1,5 +1,5 @@
 <template>
-    <main class="font-poppins text-default h-screen bg-custom-white flex flex-col align-top justify-between mx-auto">
+    <main class="font-lexend text-default h-screen bg-custom-white flex flex-col align-top justify-between mx-auto">
         <header class="w-full rounded-xl flex items-center justify-between p-5">
             <p class="text-2xl font-black dark:text-white">T<span class="text-custom-purple">h</span>reads<span class="text-custom-pink">.</span></p>
             <div class="flex gap-4">

@@ -11,9 +11,6 @@ module.exports = {
   ],
   theme: {
     extend: {
-      boxShadowColor: {
-        DEFAULT: '#F3F6FF'
-      },
       colors: {
         'custom-light-gray': '#F3F6FF',
         'custom-pink': '#FF2D87',
@@ -25,7 +22,7 @@ module.exports = {
         'light-gray': '#97979E'
       },
       fontFamily: {
-        poppins: ['Poppins']
+        lexend: ['Lexend']
       }
     }
   },

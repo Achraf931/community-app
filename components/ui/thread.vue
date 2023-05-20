@@ -66,8 +66,10 @@ props.thread.attributes.content = props.thread.attributes.content.replace(/(http
   <div @click.prevent="onClick"
        class="snap-start flex align-baseline justify-start gap-4 rounded-3xl bg-custom-light-gray shadow-custom-light-gray shadow-md p-4">
     <div class="flex flex-col justify-between text-xs font-medium gap-2 min-w-[2.5rem]">
-      <img class="w-10 h-10 rounded-xl object-cover shadow-custom-light-gray shadow-md" width="40" height="40"
-           :src="props.thread.attributes.author.data.attributes.avatar_url" alt="Photo de profil">
+      <NuxtLink :to="{ name: 'profile-id', params: { id: props.thread.attributes.author.data.id } }" @click.stop="">
+        <img class="w-10 h-10 rounded-xl object-cover shadow-custom-light-gray shadow-md" width="40" height="40"
+             :src="props.thread.attributes.author.data.attributes.avatar_url" alt="Photo de profil">
+      </NuxtLink>
       <div>
         <p class="flex items-center justify-start text-light-gray fill-light-gray gap-1">
           <svg class="w-5 h-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
@@ -90,8 +92,8 @@ props.thread.attributes.content = props.thread.attributes.content.replace(/(http
     <div class="flex gap-2 items-center w-full">
       <div class="w-full">
         <div class="flex items-center justify-between">
-          <p class="text-sm font-bold">{{ props.thread.attributes.author.data.attributes.firstname }}
-            {{ props.thread.attributes.author.data.attributes.lastname }}</p>
+          <NuxtLink :to="{ name: 'profile-id', params: { id: props.thread.attributes.author.data.id } }" @click.stop="" class="text-sm font-bold">{{ props.thread.attributes.author.data.attributes.firstname }}
+            {{ props.thread.attributes.author.data.attributes.lastname }}</NuxtLink>
           <small class="text-xs text-light-gray font-medium">{{
               props.thread.attributes.author.data.attributes.school
             }}</small>

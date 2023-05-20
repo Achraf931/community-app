@@ -4,7 +4,7 @@ import { useAuthStore } from '@/stores/AuthStore'
 const store = useAuthStore()
 </script>
 <template>
-    <main class="font-poppins text-default h-screen bg-custom-light-gray flex flex-col align-top justify-between mx-auto">
+    <main class="font-lexend text-default h-screen bg-custom-light-gray flex flex-col align-top justify-between mx-auto">
         <header v-if="store.getUser" class="w-full bg-white rounded-xl flex items-center justify-between p-5">
             <img class="w-10 h-10 p-0.5 rounded-full object-cover border border-solid border-custom-purple"
                  :src="store.getUser.avatar_url"

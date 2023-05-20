@@ -2,7 +2,7 @@
     const router = useRouter()
 </script>
 <template>
-    <main class="font-poppins text-default h-screen bg-white flex flex-col align-top justify-between mx-auto">
+    <main class="font-lexend text-default h-screen bg-white flex flex-col align-top justify-between mx-auto">
         <header class="w-full rounded-xl flex items-center justify-between p-5">
             <div @click="() =>  router.go(-1)" class="flex items-center justify-center p-2.5 w-10 h-10 bg-custom-light-gray shadow-custom-light-gray shadow-sm rounded-full">
                 <svg class="w-5 h-5 fill-light-gray stroke-light-gray" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
