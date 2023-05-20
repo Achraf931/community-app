@@ -45,7 +45,7 @@ const onSubmit = async () => {
   <section class="flex-1 flex flex-col gap-5 bg-custom-purple justify-between">
     <div class="p-5 pb-0 text-white">
       <NuxtLink to="/" class="font-black text-2xl">Community</NuxtLink>
-      <p class="text-sm mt-2">Le plus grand réseau d'étudiants,<br />penser et gérer par des étudiants</p>
+      <p class="text-sm mt-2">Le plus grand réseau d'étudiants,<br />pensé et géré par des étudiants</p>
     </div>
     <form @submit.prevent="onSubmit" class="p-5 flex gap-2 flex-col bg-white overflow-hidden rounded-t-3xl">
       <div class="mb-5">
