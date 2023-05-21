@@ -10,11 +10,11 @@ export default defineNuxtConfig({
                 { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no' },
                 { charset: 'utf-8' },
                 { name: 'theme-color', content: '#fff' },
-                { name: 'description', content: 'Réseau social d\'entraide pour étudiants.' },
+                { name: 'description', content: 'Rejoignez Community, la plateforme d\'apprentissage collaborative conçue par des étudiants, pour des étudiants. Obtenez des réponses à vos questions académiques et bénéficiez du soutien de vos pairs passionnés. Connectez-vous avec une communauté dynamique et développez vos compétences ensemble. Inscrivez-vous dès maintenant et profitez d\'une expérience d\'apprentissage interactive et enrichissante.' },
                 { property: 'og:title', content: 'Community' },
                 { property: 'og:type', content: 'article' },
                 { property: 'fb:app_id', content: '6148163521925860' },
-                { property: 'og:description', content: 'Réseau social d\'entraide pour étudiants.' },
+                { property: 'og:description', content: 'Rejoignez Community, la plateforme d\'apprentissage collaborative conçue par des étudiants, pour des étudiants. Obtenez des réponses à vos questions académiques et bénéficiez du soutien de vos pairs passionnés. Connectez-vous avec une communauté dynamique et développez vos compétences ensemble. Inscrivez-vous dès maintenant et profitez d\'une expérience d\'apprentissage interactive et enrichissante.' },
                 { property: 'og:image', content: 'https://community-social.netlify.app/images/preview.png' },
                 { property: 'og:url', content: 'https://community-social.netlify.app' },
                 { name: 'twitter:card', content: 'summary_large_image' }
@@ -36,7 +36,7 @@ export default defineNuxtConfig({
         manifest: {
             name: 'Community',
             short_name: 'Community',
-            description: 'Réseau social d\'entraide pour étudiants.',
+            description: 'Rejoignez Community, la plateforme d\'apprentissage collaborative conçue par des étudiants, pour des étudiants. Obtenez des réponses à vos questions académiques et bénéficiez du soutien de vos pairs passionnés. Connectez-vous avec une communauté dynamique et développez vos compétences ensemble. Inscrivez-vous dès maintenant et profitez d\'une expérience d\'apprentissage interactive et enrichissante.',
             lang: 'fr',
             start_url: '/onboarding',
             icons: [
