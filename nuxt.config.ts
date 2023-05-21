@@ -2,7 +2,7 @@
 export default defineNuxtConfig({
     app: {
         head: {
-            title: 'Community',
+            title: 'Studup',
             htmlAttrs: {
                 lang: 'fr'
             },
