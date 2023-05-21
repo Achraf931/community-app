@@ -10,13 +10,13 @@ export default defineNuxtConfig({
                 { name: 'viewport', content: 'width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no' },
                 { charset: 'utf-8' },
                 { name: 'theme-color', content: '#fff' },
-                { name: 'description', content: 'Rejoignez Community, la plateforme d\'apprentissage collaborative conçue par des étudiants, pour des étudiants. Obtenez des réponses à vos questions académiques et bénéficiez du soutien de vos pairs passionnés. Connectez-vous avec une communauté dynamique et développez vos compétences ensemble.' },
-                { property: 'og:title', content: 'Community' },
+                { name: 'description', content: 'Rejoignez Studup, la plateforme d\'apprentissage collaborative conçue par des étudiants, pour des étudiants. Obtenez des réponses à vos questions académiques et bénéficiez du soutien de vos pairs passionnés. Connectez-vous avec une communauté dynamique et développez vos compétences ensemble.' },
+                { property: 'og:title', content: 'Studup' },
                 { property: 'og:type', content: 'article' },
                 { property: 'fb:app_id', content: '6148163521925860' },
-                { property: 'og:description', content: 'Rejoignez Community, la plateforme d\'apprentissage collaborative conçue par des étudiants, pour des étudiants. Obtenez des réponses à vos questions académiques et bénéficiez du soutien de vos pairs passionnés. Connectez-vous avec une communauté dynamique et développez vos compétences ensemble.' },
-                { property: 'og:image', content: 'https://community-social.netlify.app/images/preview.png' },
-                { property: 'og:url', content: 'https://community-social.netlify.app' },
+                { property: 'og:description', content: 'Rejoignez Studup, la plateforme d\'apprentissage collaborative conçue par des étudiants, pour des étudiants. Obtenez des réponses à vos questions académiques et bénéficiez du soutien de vos pairs passionnés. Connectez-vous avec une communauté dynamique et développez vos compétences ensemble.' },
+                { property: 'og:image', content: 'https://studup.app/images/preview.png' },
+                { property: 'og:url', content: 'https://studup.app' },
                 { name: 'twitter:card', content: 'summary_large_image' }
             ]
         }
@@ -34,9 +34,9 @@ export default defineNuxtConfig({
     ],
     pwa: {
         manifest: {
-            name: 'Community',
-            short_name: 'Community',
-            description: 'Rejoignez Community, la plateforme d\'apprentissage collaborative conçue par des étudiants, pour des étudiants. Obtenez des réponses à vos questions académiques et bénéficiez du soutien de vos pairs passionnés. Connectez-vous avec une communauté dynamique et développez vos compétences ensemble.',
+            name: 'Studup',
+            short_name: 'Studup',
+            description: 'Rejoignez Studup, la plateforme d\'apprentissage collaborative conçue par des étudiants, pour des étudiants. Obtenez des réponses à vos questions académiques et bénéficiez du soutien de vos pairs passionnés. Connectez-vous avec une communauté dynamique et développez vos compétences ensemble.',
             lang: 'fr',
             start_url: '/onboarding',
             icons: [

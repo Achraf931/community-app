@@ -68,7 +68,7 @@ const handleRegister = async () => {
 <template>
     <section class="flex-1 flex flex-col gap-5 bg-custom-purple justify-between">
         <div class="p-5 pb-0 text-white">
-            <h1 class="font-black text-2xl">Community</h1>
+            <h1 class="font-black text-2xl">Studup</h1>
             <p class="text-sm mt-2">Le plus grand réseau d'étudiants,<br />pensé et géré par des étudiants</p>
         </div>
         <form @submit.prevent="handleRegister" class="p-5 flex gap-2 flex-col bg-white overflow-hidden rounded-t-3xl">
