@@ -23,6 +23,9 @@ const { $dayjs } = useNuxtApp(),
               },
               populate: {
                 comments: {
+                  sort: {
+                    createdAt: 'desc'
+                  },
                   populate: {
                     author: true,
                     likes: { populate: '*' }
@@ -59,7 +62,13 @@ const onSubmit = async () => {
           sort: { createdAt: 'desc' },
           populate: {
             author: true,
-            likes: { populate: '*' }
+            likes: { populate: '*' },
+            comments: {
+              sort: {
+                createdAt: 'desc'
+              },
+              populate: '*'
+            }
           }
         })
     }`, {

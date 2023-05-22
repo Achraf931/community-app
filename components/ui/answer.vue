@@ -58,7 +58,7 @@ const handleLike = async () => {
       const answer = await useApi(`likes?${
           useQueryString({
             populate: {
-              answer: { populate: { likes: { populate: '*' } } }
+              answer: { populate: { likes: { populate: '*' }, author: true, comments: { populate: '*' } } }
             }
           })
       }`, {
