@@ -1,7 +1,7 @@
 <template>
     <main class="font-lexend text-default h-screen bg-white flex flex-col justify-between align-top mx-auto">
         <header class="w-full rounded-xl flex items-center justify-between p-5 pb-0">
-            <NuxtLink to="/" class="text-2xl font-black dark:text-white">C<span class="text-custom-purple">o</span>mmunity<span class="text-custom-pink">.</span></NuxtLink>
+            <NuxtLink to="/" class="text-2xl font-black dark:text-white">S<span class="text-custom-purple">t</span>ud'up<span class="text-custom-pink">.</span></NuxtLink>
             <div class="flex gap-4">
                 <ui-search />
                 <div class="flex items-center justify-center p-2.5 w-10 h-10 bg-custom-light-gray shadow-custom-light-gray shadow-sm rounded-full">
